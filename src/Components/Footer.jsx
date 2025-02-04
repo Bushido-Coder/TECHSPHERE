@@ -6,7 +6,6 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-grid">
-          {/* Quick Links */}
           <div>
             <h3 className="footer-title">Quick Links</h3>
             <ul className="footer-list">
@@ -16,8 +15,6 @@ const Footer = () => {
               <li><a href="#" className="footer-link">Contact Us</a></li>
             </ul>
           </div>
-
-          {/* Legal */}
           <div>
             <h3 className="footer-title">Legal</h3>
             <ul className="footer-list">
@@ -27,7 +24,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Information */}
           <div>
             <h3 className="footer-title">Contact Information</h3>
             <p>Email: support@techsphere.org</p>
@@ -37,13 +33,11 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          {/* Branding */}
           <div className="footer-branding">
             <span className="footer-logo">TechSphere</span>
             <p className="footer-tagline">Where tech minds gather!</p>
           </div>
           
-          {/* Social Icons */}
           <div className="footer-social">
             <a href="#" className="footer-icon"><FaYoutube /></a>
             <a href="#" className="footer-icon"><FaInstagram /></a>

@@ -1,0 +1,62 @@
+.eventCard {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 300px; /* Adjust based on the image */
+    text-align: left;
+  }
+  
+  .eventCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .eventImage {
+    width: 100%;
+    height: 180px; /* Adjust based on the image */
+    object-fit: cover;
+  }
+  
+  .eventDetails {
+    padding: 15px;
+  }
+  
+  .eventDetails h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .detailRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  
+  .detailLabel {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .detailValue {
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .ViewDetailsButton {
+    width: 100%;
+    background-color: #ff7f50;
+    color: #fff;
+    border: none;
+    border-radius: 0 0 10px 10px;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .ViewDetailsButton:hover {
+    background-color: #e56a3e;
+  }
