@@ -5,6 +5,7 @@ import Homepage from './pages/Homepage';
 
 
 // feature/detailed-page branch
+//changes in master
 const App = () => {
   return (
     <div className="App">
