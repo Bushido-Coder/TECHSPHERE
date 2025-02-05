@@ -3,8 +3,8 @@ import Navbar from '/src/Components/Navbar';
 import './App.css';
 import Homepage from './pages/Homepage';
 
-// some changes.
-// some more changes
+
+// feature/detailed-page branch
 const App = () => {
   return (
     <div className="App">
