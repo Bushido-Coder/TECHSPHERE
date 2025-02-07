@@ -12,9 +12,10 @@
   }
   
   .milestonesContainer {
+    padding: 0px 160px;
     display: flex;
     justify-content: center;
-    gap: 40px; /* Spacing between rectangles */
+    gap: 24px; /* Spacing between rectangles */
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -23,7 +24,8 @@
     flex: 1;
     max-width: 300px;
     padding: 30px;
-    background-color: #f9f9f9; /* Light gray background for rectangles */
+    background-color: white; /* Light gray background for rectangles */
+    border: solid 2px #D0D5DD;
     border-radius: 15px; /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -44,5 +46,5 @@
   .text {
     font-size: 1.25rem; /* Smaller text */
     color: #333; /* Black color */
-    font-weight: 500;
+    font-weight: bolder;
   }

@@ -4,7 +4,7 @@ import styles from './Milestones.module.css';
 const milestonesData = [
   {
     id: 1,
-    number: '10000+',
+    number: '10,000+',
     text: 'Participants',
   },
   {
@@ -14,7 +14,7 @@ const milestonesData = [
   },
   {
     id: 3,
-    number: '2000+',
+    number: '2,000+',
     text: 'Projects Submitted',
   },
 ];

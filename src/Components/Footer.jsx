@@ -30,12 +30,10 @@ const Footer = () => {
             <p>Phone: +1 (800) 123-4567</p>
             <p>Address: 123 Square Avenue, City, Country</p>
           </div>
-        </div>
 
-        <div className="footer-bottom">
+        <div className="footer-bottom"> 
           <div className="footer-branding">
-            <span className="footer-logo">TechSphere</span>
-            <p className="footer-tagline">Where tech minds gather!</p>
+            <span className="footer-logo"><img src="/src/TestImages/FooterLogo.svg"></img></span>
           </div>
           
           <div className="footer-social">
@@ -45,6 +43,8 @@ const Footer = () => {
             <a href="#" className="footer-icon"><FaFacebook /></a>
           </div>
         </div>
+        </div>
+
 
         <p className="footer-copyright">
           &copy; 2025 InnoHack. Empowering Innovators Worldwide.

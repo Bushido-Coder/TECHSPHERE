@@ -7,7 +7,8 @@
     align-items: center;
     background-color: #000;
     color: #fff;
-    padding: 40px;
+    padding: 40px 120px;
+
   }
   
   .bannerText {
@@ -24,8 +25,10 @@
   }
   
   .bannerImage img {
-    max-width: 100%;
-    height: auto;
+    width: 421px;
+    height: 260px;
+    margin-top:50px ;
+    margin-right: 60px;
   }
   
 .filters {
@@ -82,95 +85,24 @@
     margin-bottom: 20px;
   }
   
-  .howItWorks .images {
+  .workboxes{
     display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .howItWorks .images img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .testimonials {
-    background-color: #000;
-    color: white;
-    padding: 40px 0;
-    text-align: center;
-  }
-  
-  .testimonials h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    font-weight: bold;
-  }
-  
-  .navigation {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .arrow {
-    background-color: transparent;
-    border: none;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  
-  .arrow:hover {
-    color: gray;
-  }
-  
-  .testimonialCards {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    max-width: 80%; /* Restrict the width */
-    margin: 0 auto; /* Center the container */
-  }
-  
-  .testimonialCard {
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 250px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    gap: 24px;
     justify-content: space-between;
+    padding: 0px 100px;
   }
-  
-  .testimonialCard p {
-    font-size: 1rem;
-    line-height: 1.5;
+
+  .workbox{
+    border: solid 2px white;
+    border-radius: 20px;
+    box-shadow: 12px 8px 0px 0px #000000;
+    padding: 12px 24px;
   }
-  
-  .user {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 15px;
+
+  .hTextContainer {
+    font-weight: bold;
+    font-size: 20px;
   }
-  
-  .userImage {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .user p {
-    margin: 0;
-    font-size: 0.9rem;
-  }
-  
-  
   
   .milestones {
     padding: 40px;
