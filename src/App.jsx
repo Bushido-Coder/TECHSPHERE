@@ -1,7 +1,10 @@
 import React from 'react';
 import Navbar from '/src/Components/LandingComponents/Navbar';
+
+import { BrowserRouter, Routes, Route, Link } from "react-router";
 import './App.css';
-import Homepage from './pages/Homepage';
+import Homepage from './pages/homepage';
+import DetailPage from './pages/detailpage';
 
 
 // feature/detailed-page branch
@@ -9,10 +12,22 @@ import Homepage from './pages/Homepage';
 //testing
 const App = () => {
   return (
-    <div className="App">
-      <Homepage/>
-    </div>
-  );
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Homepage className='App' />} />
+      <Route path="/detail-page" element={<DetailPage/>}/>
+      <Route path="*" element={<div>NOT FOUND <Link to='/'>Home</Link></div>}/>
+    </Routes>
+  </BrowserRouter>
+
+)
+
+
+  // return (
+  //   <div className='App'>
+  //     <Homepage/>
+  //   </div>
+  // );
 };
 
 export default App;

@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import styles from './navbar.module.css';
 import Logo from '/src/assets/logo.svg';
 
@@ -16,6 +16,7 @@ const Navbar = () => {
         <button className={styles.signupButton}>Sign Up</button>
       </div>
     </nav>
+    
   );
 };
 
