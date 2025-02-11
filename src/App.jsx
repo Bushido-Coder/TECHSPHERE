@@ -1,6 +1,5 @@
 import React from 'react';
 import Navbar from '/src/Components/LandingComponents/Navbar';
-
 import { BrowserRouter, Routes, Route, Link } from "react-router";
 import './App.css';
 import Homepage from './pages/homepage';

@@ -2,7 +2,7 @@
 import EventMoreDetails from "../components/detailpage/eventMoreDetails";
 import EventOverview from "../components/detailpage/eventOverview";
 // import Footer from "../components/footer";
-import Navbar from "../components/navbar";
+import Navbar from "../components/LandingComponents/navbar";
 
 const DetailPage = () => {
   return (
