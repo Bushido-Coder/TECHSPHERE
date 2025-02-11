@@ -1,7 +1,7 @@
 .footer {
     background-color: black;
     color: white;
-    padding: 60px 160px;
+    padding: 60px 120px;
     text-align: left;
   }
   
@@ -14,13 +14,23 @@
     gap: 42px;
   }
   
+  .Contact{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+
   .footer-title {
     font-size: 18px;
     font-weight: bold;
-    /* margin-bottom: 12px; */
+    padding-bottom: 12px;
   }
+
+
   
   .footer-list {
+    margin-top: 8px;
     list-style: none;
     padding: 0;
   }
@@ -29,7 +39,7 @@
     color: white;
     text-decoration: none;
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     transition: color 0.3s ease;
   }
   
@@ -47,7 +57,8 @@
   }
   
   .footer-logo {
-    margin-left:40px;
+    position: relative;
+    left: 60px;
   }
   
   .footer-tagline {
@@ -55,6 +66,11 @@
   }
   
   .footer-social {
+    position: relative;
+    top: 40px;
+    left: 100px;
+    padding-top: 40px;
+    /* padding-left: 120px; */
     display: flex;
     gap: 16px;
   }
@@ -67,6 +83,10 @@
   
   .footer-icon:hover {
     color: gray;
+  }
+
+  hr{
+    margin-top:40px;
   }
   
   .footer-copyright {

@@ -1,5 +1,6 @@
 import React from 'react';
-import Navbar from '/src/Components/Navbar';
+import Navbar from '/src/Components/LandingComponents/Navbar';
+import { BrowserRouter, Routes, Route, Link } from "react-router";
 import './App.css';
 import Homepage from './pages/Homepage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -15,6 +16,7 @@ const App=()=>
         <BrowserRouter>
         <Routes>
          <Route path="/" element={<Homepage/>}></Route>
+         <Route path="/detail-page" element={<DetailPage/>}/>
           <Route path="/nonlogin" element={<Nonloginpage/>}></Route>
           <Route path="/register" element={<Registration />}></Route>
            <Route path="/dashboard" element={<DashboardHomePage />}></Route> 

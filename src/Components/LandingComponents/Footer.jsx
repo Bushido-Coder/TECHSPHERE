@@ -24,7 +24,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div>
+          <div className="Contact">
             <h3 className="footer-title">Contact Information</h3>
             <p>Email: support@techsphere.org</p>
             <p>Phone: +1 (800) 123-4567</p>
@@ -37,14 +37,15 @@ const Footer = () => {
           </div>
           
           <div className="footer-social">
-            <a href="#" className="footer-icon"><FaYoutube /></a>
-            <a href="#" className="footer-icon"><FaInstagram /></a>
-            <a href="#" className="footer-icon"><FaLinkedin /></a>
-            <a href="#" className="footer-icon"><FaFacebook /></a>
+            <a href="#" className="footer-icon"><img src = "/src/TestImages/youtube.svg"></img></a>
+            <a href="#" className="footer-icon"><img src = "/src/TestImages/instagram.svg"></img></a>
+            <a href="#" className="footer-icon"><img src = "/src/TestImages/linkedin.svg"></img></a>
+            <a href="#" className="footer-icon"><img src = "/src/TestImages/facebook.svg"></img></a>
           </div>
         </div>
         </div>
 
+        <hr></hr>
 
         <p className="footer-copyright">
           &copy; 2025 InnoHack. Empowering Innovators Worldwide.

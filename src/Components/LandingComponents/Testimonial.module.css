@@ -9,6 +9,7 @@
     align-items: center;
     text-align: center;
     justify-content: space-between;
+    padding: 0px 24px;
   }
   
   .testimonials h2 {
@@ -20,9 +21,11 @@
   
   .navigation {
     margin-right: 140px;
+    
   }
   
   .arrow {
+    padding-left:30px;
     background-color: transparent;
     border: none;
     color: white;
@@ -30,12 +33,13 @@
     cursor: pointer;
     transition: color 0.3s ease;
   }
-  
-  .arrow:hover {
-    color: gray;
+
+  .arrow:hover{
+    opacity: 0.5;
   }
   
   .testimonialCards {
+    padding-top: 30px;
     display: flex;
     justify-content: center;
     gap: 12px;
