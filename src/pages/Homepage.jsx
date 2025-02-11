@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Navbar from '/src/Components/Navbar';
-import EventCard from '/src/Components/EventCard';
-import Footer from '/src/Components/Footer';
+import Navbar from '/src/Components/LandingComponents/Navbar';
+import EventCard from '/src/Components//LandingComponents/EventCard';
+import Footer from '/src/Components/LandingComponents/Footer';
 import styles from './Homepage.module.css';
-import Testimonials from '../Components/TestimonialCard';
-import Milestones from '../Components/Milestones'; 
+import Testimonials from '../Components/LandingComponents/TestimonialCard';
+import Milestones from '../Components/LandingComponents/Milestones'; 
 
 const Homepage = () => {
   const [filter, setFilter] = useState('all'); 
@@ -16,6 +16,7 @@ const Homepage = () => {
         <div className={styles.bannerText}>
           <h1>Your Gateway to Tech Events, Workshops & Hackathons</h1>
           <p>Explore, Apply, and Innovate with the best tech events around the world.</p>
+          <button className={styles.registerButton}>Start Exploring</button>
         </div>
         <div className={styles.bannerImage}>
           <img src="/src/pages/images/OBJECT.svg" alt="Banner" />
@@ -24,15 +25,41 @@ const Homepage = () => {
       <section className={styles.events}>
         <h2>List of Events</h2>
         <div className={styles.filters}>
-          <button onClick={() => setFilter('all')} className={filter === 'all' ? styles.active : ''}>All</button>
-          <button onClick={() => setFilter('workshop')} className={filter === 'workshop' ? styles.active : ''}>Workshops</button>
-          <button onClick={() => setFilter('concert')} className={filter === 'concert' ? styles.active : ''}>Concerts</button>
-          <button onClick={() => setFilter('seminar')} className={filter === 'seminar' ? styles.active : ''}>Seminars</button>
+        <button 
+  onClick={() => setFilter('all')} 
+  className={`${styles.hackathon} ${filter === 'all' ? styles.active : ''}`}
+    >
+      <div className={styles.logo}><img src = "/src/TestImages/hackathon.svg"></img></div><div className={styles.logotext}> Hackathon</div>
+    </button>
+
+    <button 
+      onClick={() => setFilter('workshop')} 
+      className={`${styles.webinar} ${filter === 'workshop' ? styles.active : ''}`}
+    >
+      <div className={styles.logo}><img src = "/src/TestImages/webinar.svg"></img></div><div className={styles.logotext}> Webinar</div>
+    </button>
+
+    <button 
+      onClick={() => setFilter('concert')} 
+      className={`${styles.workshop} ${filter === 'concert' ? styles.active : ''}`}
+    >
+      <div className={styles.logo}><img src = "/src/TestImages/workshop.svg"></img></div><div className={styles.logotext}> Workshop</div>
+    </button>
+
+    <button 
+      onClick={() => setFilter('seminar')} 
+      className={`${styles.conference} ${filter === 'seminar' ? styles.active : ''}`}
+    >
+      <div className={styles.logo}><img src = "/src/TestImages/conference.svg"></img></div><div className={styles.logotext}> Conference</div>
+    </button>
+
         </div>
         <div className={styles.eventCards}>
           <EventCard filter={filter} />
         </div>
+        <div className={styles.viewAllButton}>
         <button className={styles.viewAll}>View All</button>
+        </div>
       </section>
       <section className={styles.howItWorks}>
         <h2>How It Works?</h2>

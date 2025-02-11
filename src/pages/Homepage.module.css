@@ -16,12 +16,14 @@
   }
   
   .bannerText h1 {
+    padding-top:20px ;
     font-size: 2.5rem;
     margin-bottom: 10px;
   }
   
   .bannerText p {
     font-size: 1.2rem;
+    padding-bottom:30px ;
   }
   
   .bannerImage img {
@@ -30,31 +32,88 @@
     margin-top:50px ;
     margin-right: 60px;
   }
+
+  .registerButton {
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding-top: 12px;
+    padding-right: 36px;
+    padding-bottom: 12px;
+    padding-left: 36px;
+    background-color: #EB5B00;
+  }
   
 .filters {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 48px;
+    margin-bottom: 30px;
+  }
+
+  .hackathon{
+    border-radius: 4px;
+    padding:8px 42px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #FFEFD3;
+    border: solid 1px #FFDBA5;
+    font-weight: bold;
+  }
+
+  .webinar{
+    border-radius: 4px;
+    padding:8px 42px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #E8EDFB;
+    border: 1px solid #8EA7EC;
+    font-weight: bold;
+
   }
   
-  .filters button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 20px; 
-    background-color: #f0f0f0;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+  .workshop{
+    border-radius: 4px;
+    padding:8px 42px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #FFEFD3;
+    border: solid 1px #F7CE46;
+    font-weight: bold;
+
+  }
+
+  .conference{
+    border-radius: 4px;
+    padding:8px 42px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #ECFDF5;
+    border: 1px solid #A7F3D0;
+    font-weight: bold;
+
   }
   
   .filters button.active {
-    background-color: #ff7f50;
-    color: #fff;
+    /* background-color: #ff7f50;
+    color: #fff; */
   }
   
   .filters button:hover {
-    background-color: #ff7f50;
-    color: #fff;
+    /* background-color: #ff7f50;
+    color: #fff; */
+  }
+
+  .events h2{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 42px;
+    text-align: center;
   }
   
   .eventCards {
@@ -65,24 +124,31 @@
     margin-left: 80px;
     margin-top: 20px;
   }
+
+  .viewAllButton {
+    text-align: center;
+  }
   
   .viewAll {
-    padding: 10px 20px;
+    padding: 10px 50px;
+    font-size: 1rem;
     border: none;
-    border-radius: 20px;
-    background-color: #ff7f50;
+    border-radius: 4px;
+    font-weight: bold;
+    background-color: black;
     color: #fff;
     cursor: pointer;
     margin-top: 20px;
   }
   .howItWorks {
-    padding: 40px;
+    padding:80px 40px;
     text-align: center;
   }
   
   .howItWorks h2 {
-    font-size: 2rem;
+    font-size: 3rem;
     margin-bottom: 20px;
+    padding-bottom:40px ;
   }
   
   .workboxes{
