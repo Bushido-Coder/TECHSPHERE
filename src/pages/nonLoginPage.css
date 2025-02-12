@@ -1,6 +1,6 @@
 .event-container {
   padding: 20px;
-  margin-top: 5rem;
+
  
 }
 .event-title {
@@ -8,6 +8,7 @@
     font-weight: bold;
     text-align: center;
     margin-bottom: 20px;
+    margin-top:15px;
     color: #333;
   }
   .sort-container {

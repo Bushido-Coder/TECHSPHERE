@@ -1,8 +1,8 @@
 
-import EventMoreDetails from "../components/detailpage/eventMoreDetails";
-import EventOverview from "../components/detailpage/eventOverview";
+import EventMoreDetails from "../Components/detailpage/eventMoreDetails";
+import EventOverview from "../Components/detailpage/eventOverview";
 // import Footer from "../components/footer";
-import Navbar from "../components/LandingComponents/navbar";
+import Navbar from "../Components/LandingComponents/navbar";
 
 const DetailPage = () => {
   return (

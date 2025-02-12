@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import Navbar from '/src/Components/LandingComponents/Navbar';
-import EventCard from '/src/Components//LandingComponents/EventCard';
+import EventCard from '/src/Components/eventCard.jsx';
 import Footer from '/src/Components/LandingComponents/Footer';
 import styles from './Homepage.module.css';
 import Testimonials from '../Components/LandingComponents/TestimonialCard';
@@ -55,7 +55,7 @@ const Homepage = () => {
 
         </div>
         <div className={styles.eventCards}>
-          <EventCard filter={filter} />
+          <EventCard/>
         </div>
         <div className={styles.viewAllButton}>
         <button className={styles.viewAll}>View All</button>

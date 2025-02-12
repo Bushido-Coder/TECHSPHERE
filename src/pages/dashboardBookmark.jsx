@@ -1,4 +1,4 @@
-import MenuBar from "../componets/menuBar";
+import MenuBar from "../Components/menuBar";
 
 
 const DashboardBookmarkEvents = () => {

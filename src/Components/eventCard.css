@@ -51,15 +51,15 @@
 .event-name {
     font-weight: bold;
     font-size: 18px;
-    margin-bottom: -12px;
+    margin-bottom: 1px;
   }
   
   .event-description {
-    margin-bottom: -12px;
+    margin-bottom: 1px;
   }
   
   .event-detail {
-    margin-bottom: -12px;
+    margin-bottom: 1px;
   }
   
 
@@ -93,6 +93,6 @@ button {
   margin-bottom:18px;
   margin-left:19px;
   margin-right:20px;
-  width: 17rem;
+  width: 16rem;
   
 }

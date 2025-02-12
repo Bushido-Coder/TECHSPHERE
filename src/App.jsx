@@ -1,10 +1,9 @@
-import React from 'react';
-import Navbar from '/src/Components/LandingComponents/Navbar';
-import { BrowserRouter, Routes, Route, Link } from "react-router";
+
+import { BrowserRouter, Routes, Route,} from "react-router";
 import './App.css';
 import Homepage from './pages/Homepage';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Registration from './componets/registrationPopUp.jsx';
+
+import Registration from './Components/registrationPopUp.jsx';
 import Nonloginpage from './pages/nonLoginPage.jsx';
 import DashboardHomePage from './pages/dashboardHomePage.jsx';
 import DashboardPastEvents from './pages/dashboardPastEvents.jsx';
@@ -16,12 +15,13 @@ const App=()=>
         <BrowserRouter>
         <Routes>
          <Route path="/" element={<Homepage/>}></Route>
-         <Route path="/detail-page" element={<DetailPage/>}/>
+    
           <Route path="/nonlogin" element={<Nonloginpage/>}></Route>
           <Route path="/register" element={<Registration />}></Route>
            <Route path="/dashboard" element={<DashboardHomePage />}></Route> 
             <Route path="/dashboard/past" element={<DashboardPastEvents />}></Route>
             <Route path="/dashboard/bookmark" element={<DashboardBookmarkEvents />}></Route>
+            
        
          
         </Routes>

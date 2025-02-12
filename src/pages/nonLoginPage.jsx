@@ -1,6 +1,6 @@
-import Navbar from "../componets/Navbar.jsx";
-import Eventcard from "../componets/eventCard.jsx";
-import Footer from "../componets/Footer.jsx";
+import Navbar from "../Components/LandingComponents/Navbar.jsx";
+import Eventcard from "../Components/eventCard.jsx";
+import Footer from "../Components/LandingComponents/Footer.jsx";
 import "./nonLoginPage.css";
 
 const NonLoginPage = () => {

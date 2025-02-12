@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./registrationPopUp.css";
+import styles from "./registrationPopUp.module.css";
 
 const Registration = () => {
   const [isVisible, setIsVisible] = useState(true);
