@@ -12,7 +12,7 @@ const MenuBar = () => {
 
   return (
     <div className="menu-bar">
-      <img className="logo" src="/src/assets/Frame 21340.png" alt="Logo" />
+      <img className="logo" src="/src/assets/logo.svg" alt="Logo" />
 
       <div className="menu-list">
         {menuItems.map((item) => (
