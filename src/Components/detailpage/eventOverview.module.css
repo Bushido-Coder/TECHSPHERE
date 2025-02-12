@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     /* align-items: center; */
-    background-color: yellow;
+    background-color: white;
     gap:3.25rem;
     padding: 40px 0px 60px 0px;
 }
@@ -24,6 +24,9 @@
 }
 .button_free{
     width: 4.18rem;
+    &:hover{
+        cursor: pointer;
+    }
 }
 
 .title_container{
@@ -50,6 +53,9 @@
     height: 2.75rem;
     border: 0.0625rem solid #D0D5DD;
     border-radius: 0.375rem;
+    &:hover{
+        cursor: pointer;
+    }
 }
 
 .button_save_later{

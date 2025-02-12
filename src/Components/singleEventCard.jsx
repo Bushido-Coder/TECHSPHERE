@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./eventCard.css";
 
 const SingleEventCard = ({ event, imageBg }) => {
+  const navigate = useNavigate();
   const [bookmarked, setBookmarked] = useState(false);
 
   return (
@@ -31,7 +33,10 @@ const SingleEventCard = ({ event, imageBg }) => {
       <p className="event-detail">
         Prize Pool: <span className="bold-text">{event.Prize}</span>
       </p>
-      <button className="viewButton">View details</button>
+      <button onClick={() => navigate("/detail-page")} className="viewButton">
+      View details
+    </button>
+      {/* <button className="viewButton">View details</button> */}
     </div>
   );
 };
