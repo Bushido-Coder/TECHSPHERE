@@ -47,7 +47,9 @@ const NonLoginPage = () => {
           <option value="time">4 days</option>
         </select>
       </div>
+      <div class="event-grid">
       <Eventcard />
+      </div>
       <Footer />
     </div>
   );

@@ -26,8 +26,8 @@ const Homepage = () => {
         <h2>List of Events</h2>
         <div className={styles.filters}>
         <button 
-  onClick={() => setFilter('all')} 
-  className={`${styles.hackathon} ${filter === 'all' ? styles.active : ''}`}
+  onClick={() => setFilter('hackathon')} 
+  className={`${styles.hackathon} ${filter === 'hackathon' ? styles.active : ''}`}
     >
       <div className={styles.logo}><img src = "/src/TestImages/hackathon.svg"></img></div><div className={styles.logotext}> Hackathon</div>
     </button>
@@ -54,7 +54,7 @@ const Homepage = () => {
     </button>
 
         </div>
-        <div className={styles.eventCards}>
+        <div className={styles.eventDisplay}>
           <EventCard/>
         </div>
         <div className={styles.viewAllButton}>
