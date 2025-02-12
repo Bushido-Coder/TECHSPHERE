@@ -5,9 +5,12 @@ import Footer from '/src/Components/LandingComponents/Footer';
 import styles from './Homepage.module.css';
 import Testimonials from '../Components/LandingComponents/TestimonialCard';
 import Milestones from '../Components/LandingComponents/Milestones'; 
+import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Homepage = () => {
   const [filter, setFilter] = useState('all'); 
+  const navigate = useNavigate();
 
   return (
     <div className={styles.homepage}>
@@ -16,7 +19,9 @@ const Homepage = () => {
         <div className={styles.bannerText}>
           <h1>Your Gateway to Tech Events, Workshops & Hackathons</h1>
           <p>Explore, Apply, and Innovate with the best tech events around the world.</p>
-          <button className={styles.registerButton}>Start Exploring</button>
+          {/* <button className={styles.registerButton}><Link to="/nonlogin"> Start Exploring</Link></button> */}
+          <Link to="/nonlogin" className={styles.registerButton}> Start Exploring</Link>
+
         </div>
         <div className={styles.bannerImage}>
           <img src="/src/pages/images/OBJECT.svg" alt="Banner" />
@@ -58,7 +63,12 @@ const Homepage = () => {
           <EventCard/>
         </div>
         <div className={styles.viewAllButton}>
-        <button className={styles.viewAll}>View All</button>
+        {/* <button className={styles.viewAll}>View All</button> */}
+        <button onClick={() => navigate("/nonlogin")} className={styles.viewAll}>
+        View All
+    </button>
+        {/* <Link to="/nonlogin" className={styles.viewAll}> View All</Link> */}
+
         </div>
       </section>
       <section className={styles.howItWorks}>

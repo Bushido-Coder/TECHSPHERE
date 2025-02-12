@@ -19,6 +19,7 @@
     padding: 12px 36px;
     background-color: #FFF8EC;
     border: none;
+    font-weight: bold;
     border-bottom: 1px solid #FFF8EC;
     &:hover{
         cursor: pointer ;
@@ -33,13 +34,73 @@
 }
 
 .eventdetails_container{
-    background-color: white;
-
+    padding: 12px 160px 100px 160px;
+    background-color: #FFF8EC;
 }
 
 .elgibility_heading{
-    padding-bottom: 22px;
+    margin-bottom: 22px;
 }
 .eventdetails_item{
+    background-color: white;
+    margin-bottom: 12px;
+    border-radius: 12px;
     padding: 20px;
 }
+
+.elgibility_text_container{
+    display: flex;
+}
+
+/* .timeline_heading{
+    margin-bottom: 22px;
+} */
+
+.eventdetails_timeline{
+    display: flex;
+    flex-direction: column;
+    gap: 22px
+}
+
+.timeline_days_container{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.eventdetails_details{
+    display: flex;
+    flex-direction: column;
+    gap: 22px
+}
+
+.details_text_container{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.eventdetails_speaker_info{
+    display: grid;
+    grid-template-columns: min-content max-content;
+    grid-template-rows: repeat(2,auto);
+    row-gap: 22px;
+    column-gap: 24px;
+
+}
+
+.speaker_info_heading{
+    grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.speakerinfo_text_container{
+    align-self: center;
+}
+.speaker_info_title{
+    margin-bottom: 12px;
+}
+
+
+
+
