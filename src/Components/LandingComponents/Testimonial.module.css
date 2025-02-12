@@ -9,18 +9,18 @@
     align-items: center;
     text-align: center;
     justify-content: space-between;
-    padding: 0px 24px;
+    padding: 0px 230px;
   }
   
   .testimonials h2 {
     font-size: 2rem;
     margin-bottom: 20px;
     font-weight: bold;
-    margin-left: 140px;
+    /* margin-left: 140px; */
   }
   
   .navigation {
-    margin-right: 140px;
+    /* margin-right: 140px; */
     
   }
   

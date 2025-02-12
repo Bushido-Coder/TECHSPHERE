@@ -1,6 +1,6 @@
 .eventmoredetails_main_container{
     background-color: #FFF8EC;
-    height: 4.25rem;
+    /* height: 4.25rem; */
 }
 
 .eventmoredetails_tab_menu{
@@ -15,7 +15,7 @@
 
 .tab_menu_item{
     /* width: 8.875rem; */
-    height: 2.75rem;
+    /* height: 2.75rem; */
     padding: 12px 36px;
     background-color: #FFF8EC;
     border: none;

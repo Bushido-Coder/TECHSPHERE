@@ -1,5 +1,4 @@
-
-.event-grid {
+/* .event-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -51,15 +50,15 @@
 .event-name {
     font-weight: bold;
     font-size: 18px;
-    margin-bottom: 1px;
+    margin-bottom: -12px;
   }
   
   .event-description {
-    margin-bottom: 1px;
+    margin-bottom: -12px;
   }
   
   .event-detail {
-    margin-bottom: 1px;
+    margin-bottom: -12px;
   }
   
 
@@ -81,7 +80,7 @@
     margin-top: 6px;
   }
 
-.viewButton {
+button {
   background-color: rgb(255, 123, 0);
   color: white;
   padding: 5px;
@@ -93,6 +92,6 @@
   margin-bottom:18px;
   margin-left:19px;
   margin-right:20px;
-  width: 16rem;
+  width: 17rem;
   
-}
+} */

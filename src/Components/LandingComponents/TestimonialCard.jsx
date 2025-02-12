@@ -2,26 +2,26 @@ import React, { useState } from 'react';
 import styles from './Testimonial.module.css';
 
 const testimonialsData = [
-  { id: 1, text: 'TechSphere gave me the perfect platform to showcase my skills and connect with like-minded innovators. The experience was both challenging and rewarding!', userImage: '/src/TestImages/image1.png', userName: 'John Doe',userDesignation:"Programmer" },
-  { id: 2, text: "Our team built a fully functional prototype in just 48 hours, thanks to TechSphere's seamless event organization. Highly recommend it to every tech enthusiast!", userImage: '/src/TestImages/image1.png', userName: 'Jane Smith',userDesignation:"Programmer" },
-  { id: 3, text: 'Winning at TechSphere was a turning point for me. The cash prize and exposure opened doors to new career opportunities!', userImage: '/src/TestImages/image1.png', userName: 'Alice Johnson',userDesignation:"Programmer" },
-  { id: 4, text: "Our team built a fully functional prototype in just 48 hours, thanks to TechSphere's seamless event organization. Highly recommend it to every tech enthusiast!", userImage: '/src/TestImages/image1.png', userName: 'Jane Smith',userDesignation:"Programmer" },
-  { id: 5, text: "Our team built a fully functional prototype in just 48 hours, thanks to TechSphere's seamless event organization. Highly recommend it to every tech enthusiast!", userImage: '/src/TestImages/image1.png', userName: 'Jane Smith',userDesignation:"Programmer" },
-  { id: 6, text: "Our team built a fully functional prototype in just 48 hours, thanks to TechSphere's seamless event organization. Highly recommend it to every tech enthusiast!", userImage: '/src/TestImages/image1.png', userName: 'Jane Smith',userDesignation:"Programmer"},
-  { id: 7, text: "Our team built a fully functional prototype in just 48 hours, thanks to TechSphere's seamless event organization. Highly recommend it to every tech enthusiast!", userImage: '/src/TestImages/image1.png', userName: 'Jane Smith',userDesignation:"Programmer" },
-  { id: 8, text: "Our team built a fully functional prototype in just 48 hours, thanks to TechSphere's seamless event organization. Highly recommend it to every tech enthusiast!", userImage: '/src/TestImages/image1.png', userName: 'Jane Smith',userDesignation:"Programmer" },
-  { id: 9, text: "Our team built a fully functional prototype in just 48 hours, thanks to TechSphere's seamless event organization. Highly recommend it to every tech enthusiast!", userImage: '/src/TestImages/image1.png', userName: 'Jane Smith',userDesignation:"Programmer"},
+  { id: 1, text: 'a.TechSphere gave me the perfect platform to showcase my skills and connect with like-minded innovators. The experience was both challenging and rewarding!', userImage: '/src/TestImages/image1.png', userName: 'John Doe',userDesignation:"Programmer" },
+  { id: 2, text: "b.Our team built a fully functional prototype in just 48 hours, thanks to TechSphere's seamless event organization. Highly recommend it to every tech enthusiast!", userImage: '/src/TestImages/image1.png', userName: 'Jane Smith',userDesignation:"Programmer" },
+  { id: 3, text: 'c.Winning at TechSphere was a turning point for me. The cash prize and exposure opened doors to new career opportunities!', userImage: '/src/TestImages/image1.png', userName: 'Alice Johnson',userDesignation:"Programmer" },
+  { id: 4, text: "d.Our team built a fully functional prototype in just 48 hours, thanks to TechSphere's seamless event organization. Highly recommend it to every tech enthusiast!", userImage: '/src/TestImages/image1.png', userName: 'Jane Smith',userDesignation:"Programmer" },
+  { id: 5, text: "e.Our team built a fully functional prototype in just 48 hours, thanks to TechSphere's seamless event organization. Highly recommend it to every tech enthusiast!", userImage: '/src/TestImages/image1.png', userName: 'Jane Smith',userDesignation:"Programmer" },
+  { id: 6, text: "f.Our team built a fully functional prototype in just 48 hours, thanks to TechSphere's seamless event organization. Highly recommend it to every tech enthusiast!", userImage: '/src/TestImages/image1.png', userName: 'Jane Smith',userDesignation:"Programmer"},
+  { id: 7, text: "g.Our team built a fully functional prototype in just 48 hours, thanks to TechSphere's seamless event organization. Highly recommend it to every tech enthusiast!", userImage: '/src/TestImages/image1.png', userName: 'Jane Smith',userDesignation:"Programmer" },
+  { id: 8, text: "h.Our team built a fully functional prototype in just 48 hours, thanks to TechSphere's seamless event organization. Highly recommend it to every tech enthusiast!", userImage: '/src/TestImages/image1.png', userName: 'Jane Smith',userDesignation:"Programmer" },
+  { id: 9, text: "i.Our team built a fully functional prototype in just 48 hours, thanks to TechSphere's seamless event organization. Highly recommend it to every tech enthusiast!", userImage: '/src/TestImages/image1.png', userName: 'Jane Smith',userDesignation:"Programmer"},
 ];
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrev = () => {
-    setCurrentIndex(currentIndex === 0 ? testimonialsData.length - 3 : currentIndex - 3);
+    setCurrentIndex(currentIndex === 0 ? testimonialsData.length - 1 : currentIndex - 1);
   };
 
   const handleNext = () => {
-    setCurrentIndex(currentIndex === testimonialsData.length - 3 ? 0 : currentIndex + 3);
+    setCurrentIndex(currentIndex === testimonialsData.length - 1 ? 0 : currentIndex + 1);
   };
 
   return (

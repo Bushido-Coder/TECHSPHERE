@@ -1,6 +1,7 @@
 
 import EventMoreDetails from "../Components/detailpage/eventMoreDetails";
 import EventOverview from "../Components/detailpage/eventOverview";
+import Footer from "../Components/LandingComponents/Footer";
 // import Footer from "../components/footer";
 import Navbar from "../Components/LandingComponents/navbar";
 
@@ -10,7 +11,7 @@ const DetailPage = () => {
         <Navbar/>
         <EventOverview/>
         <EventMoreDetails></EventMoreDetails>
-        {/* <Footer></Footer> */}
+        <Footer/>
     </div>
   );
 };

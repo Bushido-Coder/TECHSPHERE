@@ -31,7 +31,7 @@ const SingleEventCard = ({ event, imageBg }) => {
       <p className="event-detail">
         Prize Pool: <span className="bold-text">{event.Prize}</span>
       </p>
-      <button>View details</button>
+      <button className="viewButton">View details</button>
     </div>
   );
 };
