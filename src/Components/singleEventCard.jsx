@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import "./eventCard.css";
 
 const SingleEventCard = ({ event, imageBg }) => {
+  console.log("event",event);
   const navigate = useNavigate();
   const [bookmarked, setBookmarked] = useState(false);
 
@@ -13,7 +14,7 @@ const SingleEventCard = ({ event, imageBg }) => {
         <img className="img" src="/Illustration.png" alt="Illustration" />
       </div>
       <div className="event-header">
-        <p className="event-location">{event.Location}</p>
+        <p className="event-location">{event.location}</p>
         <div className="bookmark-icon" onClick={() => setBookmarked(!bookmarked)}>
           {bookmarked ? (
             <img src="bookmark (1).png" alt="Bookmarked" />
@@ -22,16 +23,16 @@ const SingleEventCard = ({ event, imageBg }) => {
           )}
         </div>
       </div>
-      <h4 className="event-name">{event.Name}</h4>
-      <p className="event-description">{event.Description}</p>
+      <h4 className="event-name">{event.name}</h4>
+      <p className="event-description">{event.description}</p>
       <p className="event-detail">
-        Start: <span className="bold-text">{event.Start}</span>
+        Start: <span className="bold-text">{event.start}</span>
       </p>
       <p className="event-detail">
-        Duration: <span className="bold-text">{event.Duration}</span>
+        Duration: <span className="bold-text">{event.duration}</span>
       </p>
       <p className="event-detail">
-        Prize Pool: <span className="bold-text">{event.Prize}</span>
+        Prize Pool: <span className="bold-text">{event.prize}</span>
       </p>
       <button onClick={() => navigate("/detail-page")} className="viewButton">
       View details
