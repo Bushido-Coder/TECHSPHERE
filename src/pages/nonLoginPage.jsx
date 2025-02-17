@@ -3,10 +3,11 @@ import Eventcard from "../Components/eventCard.jsx";
 import Footer from "../Components/LandingComponents/Footer.jsx";
 import "./nonLoginPage.css";
 
-const NonLoginPage = () => {
+const NonLoginPage = ({eventdata}) => {
   return (
+    <>
+    <Navbar />
     <div className="event-container">
-      <Navbar />
       <h2 className="event-title">Explore Events</h2>
       <div className="sort-container">
         <select>
@@ -47,11 +48,12 @@ const NonLoginPage = () => {
           <option value="time">4 days</option>
         </select>
       </div>
-      <div class="event-grid">
-      <Eventcard />
+      <div className="event-grid">
+      <Eventcard  eventdata={eventdata} />
       </div>
-      <Footer />
     </div>
+    <Footer />
+    </>
   );
 };
 
