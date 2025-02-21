@@ -14,7 +14,7 @@ const App = () => {
   const [eventdata, setEventdata] = useState([]);
   const getEventdata = async () => {
     const res = await fetch(
-      import.meta.env.VITE_BACKEND_URL + "/api/v1/eventcard"
+      import.meta.env.VITE_BACKEND_URL + "api/v1/eventcard"
     );
     const resObj = await res.json();
     setEventdata(resObj.data);
