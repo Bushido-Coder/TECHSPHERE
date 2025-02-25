@@ -53,7 +53,7 @@ const App=()=>
         <Routes>
          <Route path="/" element={<Homepage eventdata={eventdata} manageLogin={manageLogin} userInfo={userInfo}  setUserInfo={setUserInfo}/>}></Route>
          <Route path="/detail-page" element={<DetailPage/>}></Route>
-          <Route path="/nonlogin" element={<Nonloginpage eventdata={eventdata}/>}></Route>
+          <Route path="/nonlogin" element={<Nonloginpage />}></Route>
           <Route path="/register" element={<Registration />}></Route>
            <Route path="/dashboard" element={<DashboardHomePage />}></Route> 
             <Route path="/dashboard/past" element={<DashboardPastEvents />}></Route>
