@@ -1,5 +1,4 @@
 import  { useState } from 'react';
-import PropTypes from "prop-types";
 import Navbar from '/src/Components/LandingComponents/Navbar';
 import EventCard from '/src/Components/eventCard.jsx';
 import Footer from '/src/Components/LandingComponents/Footer';
@@ -9,13 +8,15 @@ import Milestones from '../Components/LandingComponents/Milestones';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
-const Homepage = ({eventdata}) => {
+const Homepage = ({manageLogin,userInfo,setUserInfo,eventdata}) => {
+  console.log("HomepAGE",userInfo);
+
   const [filter, setFilter] = useState('all'); 
   const navigate = useNavigate();
 
   return (
     <div className={styles.homepage}>
-      <Navbar />
+      <Navbar manageLogin={manageLogin} userInfo={userInfo} setUserInfo={setUserInfo}/>
       <section className={styles.banner}>
         <div className={styles.bannerText}>
           <h1>Your Gateway to Tech Events, Workshops & Hackathons</h1>
@@ -110,8 +111,5 @@ const Homepage = ({eventdata}) => {
     </div>
   );
 };
-
-Homepage.propTypes = {
-  eventdata: PropTypes.array.isRequired};
 
 export default Homepage;
