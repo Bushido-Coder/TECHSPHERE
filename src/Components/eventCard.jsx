@@ -4,7 +4,7 @@ import "./eventCard.css";
 import SingleEventCard from "./singleEventCard";
 import PropTypes from "prop-types";
 
-const Eventcard = ({eventdata}) => {
+const Eventcard = ({eventdata=[]}) => {
   console.log("1",eventdata);
   return (
     <>
