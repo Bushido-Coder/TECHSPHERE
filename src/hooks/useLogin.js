@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 const useLogin = ({manageLogin,onClose}) => {
   const navigate = useNavigate();
     const [loading, setLoading]= useState(false);   
@@ -11,7 +12,6 @@ const useLogin = ({manageLogin,onClose}) => {
           method: "POST",
           credentials: "include",
           body: JSON.stringify(userInfo),
-          credentials: "include",
           headers: {
             "content-type": "application/json",
             
@@ -20,7 +20,7 @@ const useLogin = ({manageLogin,onClose}) => {
         // console.log(res);
         const data = await res.json();
         if (res.status == 200) {
-          alert("Login Succesful!");
+          toast.success("Login Succesful!");
           // console.log(data);
           manageLogin(data.userData); //data is response inside which data inside which userinfo with name,email as object
           onClose();
@@ -29,24 +29,24 @@ const useLogin = ({manageLogin,onClose}) => {
           // navigate('/signup');
 
             //redirect
-            alert('Email is not registered. Please sign up !');
+            toast.error('Email is not registered. Please sign up !');
             // alert(data.message);
         }
         else if (res.status === 401) { // user is not registered
           // navigate('/signup');
 
             //redirect
-            alert('Email or password is incorrect !');
+            toast.error('Email or password is incorrect !');
             // alert(data.message);
         }
         
         else {
-          alert(data.message);
+          toast(data.message);
         }
       } 
       catch (err) {
         console.log("catch");
-        alert(err.message);
+        toast.error(err.message);
       }
       finally{  //This code executes irrespective of try,catch block 
         setLoading(false);
