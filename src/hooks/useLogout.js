@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 const useLogout=({setUserInfo})=>{
     const logout=async()=>{
         try {
-            const res = await fetch("http://localhost:1900/api/v1/auth/logout", {
+            const res = await fetch(import.meta.env.VITE_BACKEND_URL +"/api/v1/auth/logout", {
               method: "POST",
               credentials: "include",
               headers: {
