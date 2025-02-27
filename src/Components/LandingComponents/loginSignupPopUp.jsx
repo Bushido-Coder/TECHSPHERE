@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import styles from "./LoginSignupPopup.module.css";
+import  { useState, useRef } from "react";
+import styles from "./loginSignupPopUp.module.css";
 import useOTP from "../../hooks/useOTP";
 import useSignup from "../../hooks/useSignup";
 import useLogin from "../../hooks/useLogin";
