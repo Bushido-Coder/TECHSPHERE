@@ -41,7 +41,7 @@
   font-weight: bold;
   font-size: 14px;
   margin-top: 7px;
-  margin-bottom: 0px;
+  margin-bottom: 5px;
   display: inline-block;
   padding: 2px 5px;
   border-radius: 4px;
@@ -51,15 +51,15 @@
 .event-name {
     font-weight: bold;
     font-size: 18px;
-    margin-bottom: 1px;
+    margin-bottom: 3px;
   }
   
   .event-description {
-    margin-bottom: 1px;
+    margin-bottom: 3px;
   }
   
   .event-detail {
-    margin-bottom: 1px;
+    margin-bottom: 2px;
   }
   
 
