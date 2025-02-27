@@ -29,7 +29,10 @@ const App=()=>
           }
   const getEventdata = async () => {
     const res = await fetch(
-      import.meta.env.VITE_BACKEND_URL + "api/v1/eventcard"
+      import.meta.env.VITE_BACKEND_URL + "api/v1/eventcard",{
+        method: "GET",
+        credentials: "include",
+      }
     );
     // const res = await fetch("http://localhost:1900/api/v1/eventcard", {
     //   method: "GET",
