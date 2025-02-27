@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 const useSignup = ({ setIsResendAllowed,onClose}) => {
   const registerUser = async ({  email, password, otp }) => {
     try {
-      const res = await fetch("http://localhost:1900/api/v1/auth/signup", {
+      const res = await fetch(import.meta.env.VITE_BACKEND_URL +"/api/v1/auth/signup", {
         method: "POST",
         body: JSON.stringify({ email, password, otp }),
         headers: {

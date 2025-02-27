@@ -29,7 +29,7 @@ const NonLoginPage = () => {
         });
 
         const response = await fetch(
-          `http://localhost:1900/api/v1/eventcard/filter?${queryParams}`
+          import.meta.env.VITE_BACKEND_URL +`/api/v1/eventcard/filter?${queryParams}`
         );
 
         if (!response.ok) {

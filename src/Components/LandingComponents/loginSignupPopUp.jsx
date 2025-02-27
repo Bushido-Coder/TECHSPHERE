@@ -100,7 +100,8 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
 
   const sendResetOtp = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/auth/reset-password/send-otp", {
+       import.meta.env.VITE_BACKEND_URL + "/api/v1/eventcard"
+      const response = await fetch( import.meta.env.VITE_BACKEND_URL + "/api/auth/reset-password/send-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
@@ -121,7 +122,7 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
     e.preventDefault();
     const otp = otpInputs.current.map(input => input.value).join("");
     try {
-      const response = await fetch("http://localhost:5000/api/auth/reset-password/verify-otp", {
+      const response = await fetch(import.meta.env.VITE_BACKEND_URL +"/api/auth/reset-password/verify-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, otp, newPassword }),

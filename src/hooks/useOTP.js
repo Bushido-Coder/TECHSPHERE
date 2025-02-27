@@ -4,7 +4,7 @@ const useOTP=({setIsOtpSent, setIsResendAllowed, setShowOtpSection })=>{
     const sendOtp= async (email,isResend=false)=>{
         try{
             const values={email, isResend}
-            const res=await fetch("http://localhost:1900/api/v1/otp",{
+            const res=await fetch(import.meta.env.VITE_BACKEND_URL +"/api/v1/otp",{
                 method: "POST",
                 body: JSON.stringify({values}),
                 credentials: "include",

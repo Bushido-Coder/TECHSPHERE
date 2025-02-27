@@ -8,7 +8,7 @@ const useLogin = ({manageLogin,onClose}) => {
         setLoading(true);   
       try {
         const userInfo={email,password};
-        const res = await fetch("http://localhost:1900/api/v1/auth/login", {
+        const res = await fetch(import.meta.env.VITE_BACKEND_URL +"/api/v1/auth/login", {
           method: "POST",
           credentials: "include",
           body: JSON.stringify(userInfo),
