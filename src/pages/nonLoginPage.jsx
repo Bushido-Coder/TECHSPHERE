@@ -25,11 +25,12 @@ const NonLoginPage = () => {
           isFree: isFree.toString(),
           duration,
           page,
-          size: 10,
+          size: 20,
         });
 
         const response = await fetch(
-          import.meta.env.VITE_BACKEND_URL +`/api/v1/eventcard/filter?${queryParams}`
+          import.meta.env.VITE_BACKEND_URL +
+            `/api/v1/eventcard/filter?${queryParams}`
         );
 
         if (!response.ok) {
@@ -37,12 +38,11 @@ const NonLoginPage = () => {
         }
 
         const data = await response.json();
-        setEvents(data.events || []); 
+        setEvents(data.events || []);
       } catch (error) {
         setError(error.message);
       }
     };
-  
 
     fetchEvents();
   }, [view, sortBy, price, isFree, duration, page]);
@@ -51,9 +51,9 @@ const NonLoginPage = () => {
   const handleViewDetails = () => navigate("/detail-page");
   const formatDate = (date) => {
     const d = new Date(date);
-    const day = String(d.getUTCDate()).padStart(2, "0"); 
+    const day = String(d.getUTCDate()).padStart(2, "0");
     const month = d.toLocaleString("default", { month: "short" });
-    const year = d.getUTCFullYear(); 
+    const year = d.getUTCFullYear();
     return `${month} ${day}, ${year}`;
   };
 

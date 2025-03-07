@@ -29,7 +29,7 @@ const App=()=>
           }
   const getEventdata = async () => {
     const res = await fetch(
-      import.meta.env.VITE_BACKEND_URL + "/api/v1/eventcard",{
+      import.meta.env.VITE_BACKEND_URL + "/api/v1/events",{
         method: "GET",
         credentials: "include",
       }
