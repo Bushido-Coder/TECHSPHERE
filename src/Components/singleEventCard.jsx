@@ -8,7 +8,8 @@ const SingleEventCard = ({ event, imageBg }) => {
   const navigate = useNavigate();
   const [bookmarked, setBookmarked] = useState(false);
   const handleViewDetails = () => {
-    navigate("/detail-page");
+    // navigate("/detail-page");
+    navigate(`/detail-page/${event._id}`)
   };
    const formatDate = (date) => {
     const d = new Date(date);

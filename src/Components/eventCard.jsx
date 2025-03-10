@@ -9,7 +9,8 @@ const Eventcard = ({eventdata=[]}) => {
   return (
     <>
       {eventdata.map((event, index) => (
-        <SingleEventCard key={index} event={event} imageBg={event.imageBg} />
+        // <SingleEventCard key={index} event={event} imageBg={event.imageBg} />
+        <SingleEventCard key={event._id} event={event} imageBg={event.imageBg} />
       ))}
     </>
   );
