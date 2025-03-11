@@ -16,13 +16,13 @@ console.log(eventData);
   // Extract embedded schema data
   // const { eventMoreDetails } = eventData; 
   // const { eventOverview, details } = eventMoreDetails; // eventOverview & details come from embedded schema
-  const { eventOverview, details } = eventData;
+  const { eventOverview, details } = eventData.eventMoreDetails;
   console.log("eventOverview",eventOverview);
   console.log("details", details);
   return (
     <div className="styles.detailpage_main_container">
         <Navbar/>
-        <EventOverview eventOverview={eventOverview}/>
+        <EventOverview eventOverview={eventOverview } eventId={eventId}/>
         <EventMoreDetails details={details}></EventMoreDetails>
         <Footer></Footer>
     </div>

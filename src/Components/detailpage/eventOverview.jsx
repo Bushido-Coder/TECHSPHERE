@@ -35,12 +35,35 @@
 // };
 // export default EventOverview;
 
+import { useState } from "react";
+import useFetchEvents from "../../hooks/useFetchEvents";
 import styles from "./eventOverview.module.css";
+import RegistrationForm from "./RegistrationFormPopup";
 
-const EventOverview = ({ eventOverview }) => {
+const EventOverview = ({ eventOverview, eventId }) => {
+  const { eventData, loading, error } = useFetchEvents(eventId);
+  console.log(eventData,"eventdata");
+  const [showForm, setShowForm] = useState(false);
+  const [formFields, setFormFields] = useState([]);
+
+  // Show loading or error states
+  if (loading) return <p>Loading event details...</p>;
+  if (error) return <p>Error loading event: {error}</p>;
+  if (!eventData) return null; // Prevent crashing if no event data
   if (!eventOverview) return null;
 
+  // const {registration} = eventData.registration;
+  // console.log("registration",registration);
+
   const { image, heading, subtitle, button, subdetails } = eventOverview;
+
+  const handleRegisterClick = async () => {
+    if (eventData.registration) {
+      setFormFields(eventData.registration); // Use already fetched registration fields
+      setShowForm(true);
+    }
+  };
+
 
   return (
     <div className={styles.eventoverview_main_container}>
@@ -69,9 +92,10 @@ const EventOverview = ({ eventOverview }) => {
 
         <div className={styles.button_container}>
           <button className={`${styles.button_common} ${styles.button_save_later}`}>Save For Later</button>
-          <button className={`${styles.button_common} ${styles.button_register}`}>Register Now</button>
+          <button className={`${styles.button_common} ${styles.button_register}`} onClick={handleRegisterClick}>Register Now</button>
         </div>
       </div>
+      {showForm && <RegistrationForm fields={formFields} onClose={() => setShowForm(false)} />}
     </div>
   );
 };
