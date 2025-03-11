@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const useGetIsAuthorized=({setUserInfo})=>{
     const navigate= useNavigate();
     const getIsAuthorized= async ()=>{
-        const res=await fetch("http://localhost:1900/api/v1/isAuthenticated",{
+        const res=await fetch(import.meta.env.VITE_BACKEND_URL +"/api/v1/isAuthenticated",{
             credentials: "include"
         });
 

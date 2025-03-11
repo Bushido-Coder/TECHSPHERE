@@ -7,9 +7,21 @@ const SingleEventCard = ({ event, imageBg }) => {
   console.log("event",event);
   const navigate = useNavigate();
   const [bookmarked, setBookmarked] = useState(false);
+  const handleViewDetails = () => {
+    // navigate("/detail-page");
+    navigate(`/detail-page/${event._id}`)
+  };
+   const formatDate = (date) => {
+    const d = new Date(date);
+    const day = String(d.getDate()).padStart(2, "0");
+    const month = d.toLocaleString("default", { month: "short" });
+    const year = d.getFullYear();
+    return `${month} ${day}, ${year}`;
+  };
+  const formattedStartDate = formatDate(event.start);
 
   return (
-    <div className="event-card">
+    <div className="event-card"onClick={handleViewDetails}>
       <div className="image-container" style={{ backgroundColor: imageBg }}>
         <img className="img" src="/Illustration.png" alt="Illustration" />
       </div>
@@ -17,16 +29,17 @@ const SingleEventCard = ({ event, imageBg }) => {
         <p className="event-location">{event.location}</p>
         <div className="bookmark-icon" onClick={() => setBookmarked(!bookmarked)}>
           {bookmarked ? (
-            <img src="bookmark (1).png" alt="Bookmarked" />
+            <img src="/bookmark (1).png" alt="Bookmarked" />
           ) : (
-            <img src="bookmark.png" alt="Bookmark" />
+            <img src="/bookmark.png" alt="Bookmark" />
           )}
         </div>
       </div>
       <h4 className="event-name">{event.name}</h4>
       <p className="event-description">{event.description}</p>
       <p className="event-detail">
-        Start: <span className="bold-text">{event.start}</span>
+      Start: <span className="bold-text">{formattedStartDate}
+      </span>
       </p>
       <p className="event-detail">
         Duration: <span className="bold-text">{event.duration}</span>
@@ -34,9 +47,9 @@ const SingleEventCard = ({ event, imageBg }) => {
       <p className="event-detail">
         Prize Pool: <span className="bold-text">{event.prize}</span>
       </p>
-      <button onClick={() => navigate("/detail-page")} className="viewButton">
-      View details
-    </button>
+      <button onClick={handleViewDetails} className="viewButton">
+        View details
+      </button>
       {/* <button className="viewButton">View details</button> */}
     </div>
   );
@@ -44,12 +57,12 @@ const SingleEventCard = ({ event, imageBg }) => {
 
 SingleEventCard.propTypes = {
   event: PropTypes.shape({
-    Name: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-    Location: PropTypes.string.isRequired,
-    Start: PropTypes.string.isRequired,
-    Duration: PropTypes.string.isRequired,
-    Prize: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    start: PropTypes.string.isRequired,
+    duration: PropTypes.string.isRequired,
+    prize: PropTypes.string.isRequired,
   }).isRequired,
   imageBg: PropTypes.string,
 };

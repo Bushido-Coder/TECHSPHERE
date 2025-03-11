@@ -1,7 +1,9 @@
+import { toast } from "react-toastify";
+
 const useSignup = ({ setIsResendAllowed,onClose}) => {
   const registerUser = async ({  email, password, otp }) => {
     try {
-      const res = await fetch("http://localhost:1900/api/v1/auth/signup", {
+      const res = await fetch(import.meta.env.VITE_BACKEND_URL +"/api/v1/auth/signup", {
         method: "POST",
         body: JSON.stringify({ email, password, otp }),
         headers: {
@@ -12,19 +14,19 @@ const useSignup = ({ setIsResendAllowed,onClose}) => {
       console.log(res);
       const data = await res.json();
       if (res.status == 201) {
-        alert("User Registered");
+        toast.success("User Registered");
         onClose();
       } else if (res.status === 401) {
-        alert(data.message);
+        toast.error(data.message);
         setIsResendAllowed(true);
       } else if (res.status === 409) {
-        alert(data.message);
+        toast.error(data.message);
         //redirect to login as user already exists,duplicate key error
       } else {
-        alert(data.message);
+        toast(data.message);
       }
     } catch (err) {
-      alert(err.message);
+      toast.error(err.message);
     }
   };
   return { registerUser };

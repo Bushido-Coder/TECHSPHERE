@@ -1,8 +1,9 @@
-import React, { useState, useRef } from "react";
-import styles from "./LoginSignupPopup.module.css";
+import  { useState, useRef } from "react";
+import styles from "./loginSignupPopUp.module.css";
 import useOTP from "../../hooks/useOTP";
 import useSignup from "../../hooks/useSignup";
 import useLogin from "../../hooks/useLogin";
+import { toast } from "react-toastify";
 
 const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
   const [isOtpSent, setIsOtpSent] = useState(false);
@@ -45,7 +46,7 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
 
       // validation(REGEX)
       if (email.length <= 5) {
-        alert("Invalid Email!");
+        toast.error("Invalid Email!");
         return;
       }
       sendOtp(email, isResend);
@@ -99,7 +100,8 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
 
   const sendResetOtp = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/auth/reset-password/send-otp", {
+       import.meta.env.VITE_BACKEND_URL + "/api/v1/eventcard"
+      const response = await fetch( import.meta.env.VITE_BACKEND_URL + "/api/auth/reset-password/send-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
@@ -109,10 +111,10 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
         setShowOtpSection(true);
         setIsResetPassword(true);
       } else {
-        alert(data.error || "Failed to send OTP");
+        toast.error(data.error || "Failed to send OTP");
       }
     } catch (err) {
-      alert("An error occurred. Please try again.");
+      toast.error("An error occurred. Please try again.");
     }
   };
 
@@ -120,22 +122,22 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
     e.preventDefault();
     const otp = otpInputs.current.map(input => input.value).join("");
     try {
-      const response = await fetch("http://localhost:5000/api/auth/reset-password/verify-otp", {
+      const response = await fetch(import.meta.env.VITE_BACKEND_URL +"/api/auth/reset-password/verify-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, otp, newPassword }),
       });
       const data = await response.json();
       if (response.ok) {
-        alert("Password reset successful! Please log in.");
+        toast.success("Password reset successful! Please log in.");
         setIsResetPassword(false);
         setShowOtpSection(false);
         setIsLogin(true);
       } else {
-        alert(data.error || "OTP verification failed");
+        toast.error(data.error || "OTP verification failed");
       }
     } catch (err) {
-      alert("An error occurred. Please try again.");
+      toast.error("An error occurred. Please try again.");
     }
   };
 
@@ -213,7 +215,7 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
           )}
 
           <div className={styles.thirdPartyAuth}>
-            <button onClick={() => alert("Login with Google")}>Login with Google</button>
+            <button onClick={() => toast("Login with Google")}>Login with Google</button>
           </div>
 
           {isLogin && <p className={styles.signupPrompt}>Don't have an account? <span onClick={() => setIsLogin(false)}>Sign Up</span></p>}

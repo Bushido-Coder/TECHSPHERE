@@ -1,8 +1,10 @@
+import { toast } from "react-toastify";
+
 const useOTP=({setIsOtpSent, setIsResendAllowed, setShowOtpSection })=>{
     const sendOtp= async (email,isResend=false)=>{
         try{
             const values={email, isResend}
-            const res=await fetch("http://localhost:1900/api/v1/otp",{
+            const res=await fetch(import.meta.env.VITE_BACKEND_URL +"/api/v1/otp",{
                 method: "POST",
                 body: JSON.stringify({values}),
                 credentials: "include",
@@ -14,24 +16,24 @@ const useOTP=({setIsOtpSent, setIsResendAllowed, setShowOtpSection })=>{
             const data=await res.json();
             console.log(data);
             if(res.status===201){
-                alert("OTP Sent");
+                toast.success("OTP Sent");
                 setIsOtpSent(true);
                 setShowOtpSection(true);
             }
             else if(res.status===403){
-                alert(data.message);
+                toast.error(data.message);
                 setIsOtpSent(true);
                 setShowOtpSection(true);
                 setIsResendAllowed(true);
             }
             else{
-                alert(data.message);
+                toast(data.message);
             }
         }
         catch(err)
         {
             console.log(err);
-            alert(err.message);
+            toast.error(err.message);
         }
 
     };
