@@ -39,12 +39,14 @@ import { useState } from "react";
 import useFetchEvents from "../../hooks/useFetchEvents";
 import styles from "./eventOverview.module.css";
 import RegistrationForm from "./RegistrationFormPopup";
+import SuccessPopup from "./SuccessPopup";
 
 const EventOverview = ({ eventOverview, eventId }) => {
   const { eventData, loading, error } = useFetchEvents(eventId);
   console.log(eventData,"eventdata");
   const [showForm, setShowForm] = useState(false);
   const [formFields, setFormFields] = useState([]);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   // Show loading or error states
   if (loading) return <p>Loading event details...</p>;
@@ -95,7 +97,19 @@ const EventOverview = ({ eventOverview, eventId }) => {
           <button className={`${styles.button_common} ${styles.button_register}`} onClick={handleRegisterClick}>Register Now</button>
         </div>
       </div>
-      {showForm && <RegistrationForm fields={formFields} onClose={() => setShowForm(false)} />}
+      {/* {showForm && <RegistrationForm fields={formFields} onClose={() => setShowForm(false)} />} */}
+      {showForm && (
+        <RegistrationForm
+          fields={formFields}
+          eventId={eventId}
+          onClose={() => setShowForm(false)}
+          onSuccess={() => {
+            setShowForm(false);
+            setShowSuccess(true);
+          }}
+        />
+      )}
+      {showSuccess && <SuccessPopup onClose={() => setShowSuccess(false)} />}
     </div>
   );
 };
