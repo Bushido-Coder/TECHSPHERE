@@ -5,10 +5,10 @@ import EventOverview from "../Components/detailpage/eventOverview";
 import Footer from "../Components/LandingComponents/Footer";
 import Navbar from "../Components/LandingComponents/Navbar";
 
-const DetailPage = () => {
+const DetailPage = ({userInfo,setUserInfo}) => {
   const { eventId } = useParams();
   const { eventData, loading, error } = useFetchEvents(eventId);
-console.log(eventData);
+// console.log(eventData);
   if (loading) return <p>Loading event details...</p>;
   if (error) return <p>Error: {error}</p>;
   if (!eventData) return <p>No event details available.</p>;
@@ -17,12 +17,12 @@ console.log(eventData);
   // const { eventMoreDetails } = eventData; 
   // const { eventOverview, details } = eventMoreDetails; // eventOverview & details come from embedded schema
   const { eventOverview, details } = eventData.eventMoreDetails;
-  console.log("eventOverview",eventOverview);
-  console.log("details", details);
+  // console.log("eventOverview",eventOverview);
+  // console.log("details", details);
   return (
     <div className="styles.detailpage_main_container">
-        <Navbar/>
-        <EventOverview eventOverview={eventOverview } eventId={eventId}/>
+        <Navbar userInfo={userInfo} setUserInfo={setUserInfo}/>
+        <EventOverview eventOverview={eventOverview } eventId={eventId} userInfo={userInfo}/>
         <EventMoreDetails details={details}></EventMoreDetails>
         <Footer></Footer>
     </div>

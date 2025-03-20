@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
 const Homepage = ({manageLogin,userInfo,setUserInfo,eventdata}) => {
-  console.log("HomepAGE",userInfo);
+  // console.log("HomepAGE",userInfo);
 
   const [filter, setFilter] = useState('all'); 
   const navigate = useNavigate();

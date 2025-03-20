@@ -5,7 +5,7 @@ import SingleEventCard from "./singleEventCard";
 import PropTypes from "prop-types";
 
 const Eventcard = ({eventdata=[]}) => {
-  console.log("1",eventdata);
+  // console.log("1",eventdata);
   return (
     <>
       {eventdata.map((event, index) => (

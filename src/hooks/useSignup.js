@@ -11,7 +11,7 @@ const useSignup = ({ setIsResendAllowed,onClose}) => {
           credentials: "include",
         },
       });
-      console.log(res);
+      // console.log(res);
       const data = await res.json();
       if (res.status == 201) {
         toast.success("User Registered");
