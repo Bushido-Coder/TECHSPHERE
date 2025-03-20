@@ -30,7 +30,10 @@ const NonLoginPage = () => {
 
         const response = await fetch(
           import.meta.env.VITE_BACKEND_URL +
-            `/api/v1/eventcard/filter?${queryParams}`
+            `/api/v1/events/filter?${queryParams}`,{
+              method: "GET",
+              credentials : "include"
+            }
         );
 
         if (!response.ok) {
