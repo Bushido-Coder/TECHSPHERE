@@ -49,9 +49,12 @@
 import { useState } from "react";
 import styles from "./RegistrationFormPopup.module.css";
 
-const RegistrationForm = ({ fields, eventId, onClose, onSuccess }) => {
+const RegistrationForm = ({ fields, eventId, onClose, onSuccess,userInfo }) => {
+  console.log("registrationform",userInfo);
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(false);
+  const {userId}=userInfo || {};
+
 
   const handleChange = (e, field) => {
     setFormData({ ...formData, [field.title]: e.target.value });
@@ -65,7 +68,7 @@ const RegistrationForm = ({ fields, eventId, onClose, onSuccess }) => {
     const requestBody = {
       registered: [
         {
-          userId: "67d0296dd8e39f187ea9eba2", // Placeholder, replace later with logged-in user ID
+          userId, // Placeholder, replace later with logged-in user ID
           registeredDetails: Object.keys(formData).map((key) => ({
             title: key,
             value: formData[key],
@@ -73,6 +76,7 @@ const RegistrationForm = ({ fields, eventId, onClose, onSuccess }) => {
         },
       ],
     };
+    console.log("requestBody",requestBody);
 
     try {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/events/${eventId}/register`, {

@@ -41,9 +41,9 @@ import styles from "./eventOverview.module.css";
 import RegistrationForm from "./RegistrationFormPopup";
 import SuccessPopup from "./SuccessPopup";
 
-const EventOverview = ({ eventOverview, eventId }) => {
+const EventOverview = ({ eventOverview, eventId,userInfo }) => {
   const { eventData, loading, error } = useFetchEvents(eventId);
-  console.log(eventData,"eventdata");
+  // console.log(eventData,"eventdata");
   const [showForm, setShowForm] = useState(false);
   const [formFields, setFormFields] = useState([]);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -102,6 +102,7 @@ const EventOverview = ({ eventOverview, eventId }) => {
         <RegistrationForm
           fields={formFields}
           eventId={eventId}
+          userInfo={userInfo}
           onClose={() => setShowForm(false)}
           onSuccess={() => {
             setShowForm(false);

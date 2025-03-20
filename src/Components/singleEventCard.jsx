@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import "./eventCard.css";
 
 const SingleEventCard = ({ event, imageBg }) => {
-  console.log("event",event);
+  // console.log("event",event);
   const navigate = useNavigate();
   const [bookmarked, setBookmarked] = useState(false);
   const handleViewDetails = () => {

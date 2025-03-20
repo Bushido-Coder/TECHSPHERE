@@ -14,7 +14,7 @@ const useLogout=({setUserInfo})=>{
             // console.log(res);
             const data = await res.json();
             if (res.status == 200) {
-                setUserInfo({ isAuthenticated: false, email: "" });
+                setUserInfo({ isAuthenticated: false, email: "",userId: ""});
               toast.success("Logout Succesful!");
             //   navigate('/');
             } 

@@ -78,12 +78,15 @@ const App = () => {
 
   useGetIsAuthorized({ setUserInfo });
 
-  const manageLogin = ({ email }) => {
+  const manageLogin = ({ email, userId }) => {
     setUserInfo({
       isAuthenticated: true,
       email: email,
+      userId
     });
   };
+
+  console.log("userInfo",userInfo);
 
   if (loading) return <p>Loading events...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -91,7 +94,7 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Homepage eventdata={eventData} manageLogin={manageLogin} userInfo={userInfo} setUserInfo={setUserInfo} />} />
-      <Route path="/detail-page/:eventId" element={<DetailPage />} />
+      <Route path="/detail-page/:eventId" element={<DetailPage userInfo={userInfo} setUserInfo={setUserInfo} />} />
       <Route path="/nonlogin" element={<Nonloginpage eventdata={eventData} />} />
       <Route path="/register" element={<Registration />} />
       <Route path="/dashboard" element={<DashboardHomePage />} />

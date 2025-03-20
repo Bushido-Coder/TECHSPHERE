@@ -12,9 +12,9 @@ const useOTP=({setIsOtpSent, setIsResendAllowed, setShowOtpSection })=>{
                     "content-type": "application/json",
                 },
             });
-            console.log(res);
+            // console.log(res);
             const data=await res.json();
-            console.log(data);
+            // console.log(data);
             if(res.status===201){
                 toast.success("OTP Sent");
                 setIsOtpSent(true);

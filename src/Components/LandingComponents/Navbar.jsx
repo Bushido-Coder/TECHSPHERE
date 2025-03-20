@@ -5,12 +5,12 @@ import LoginSignupPopup from "./loginSignupPopUp"; // Importing the popup compon
 import useLogout from "../../hooks/useLogout";
 
 const Navbar = ({manageLogin,userInfo,setUserInfo}) => {
-  console.log("Navbar",userInfo);
+   console.log("Navbar",userInfo);
 
   const {isAuthenticated, email}=userInfo || {};
   const {logout}=useLogout({setUserInfo});
-  console.log(isAuthenticated);
-  console.log(email);
+  // console.log(isAuthenticated);
+  // console.log(email);
   const [showPopup, setShowPopup] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const userEmail = localStorage.getItem("userEmail");
