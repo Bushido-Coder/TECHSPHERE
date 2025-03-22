@@ -9,15 +9,18 @@ const useBookmarks = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await fetch(import.meta.env.VITE_BACKEND_URL + `api/v1/isAuthenticated`, {
+        const res = await fetch(import.meta.env.VITE_BACKEND_URL + `/api/v1/isAuthenticated`, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
         });
-
+  
+     
         const data = await res.json();
-        if (res.ok && data.userId) {
-          setUserId(data.userId);
+        console.log("Auth Response:", data);
+        if (res.ok && data.isAuthenticated && data.user?.userId) {
+          setUserId(data.user.userId);  
+          console.log("data for user ifd",data.user.userId);
         } else {
           toast.error("Please log in to access bookmarks.");
         }
@@ -26,9 +29,10 @@ const useBookmarks = () => {
         toast.error("Something went wrong while fetching user data.");
       }
     };
-
+  
     fetchProfile();
   }, []);
+  
 
   // Fetch bookmarked events when userId is available
   useEffect(() => {
@@ -36,7 +40,7 @@ const useBookmarks = () => {
 
     const fetchBookmarks = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/auth/bookmarks/${userId}`);
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/events/bookmarks/${userId}`);
         const data = await response.json();
 
         if (response.ok) {
@@ -56,6 +60,8 @@ const useBookmarks = () => {
   // Function to toggle bookmark
   const toggleBookmark = async (eventId) => {
     if (!userId) {
+      console.log("📌 userId in useBookmarks:", userId);
+      console.log("user id is missimg")
       toast.error("Please log in to bookmark events.", { toastId: "login-error" });
       return;
     }
@@ -64,7 +70,7 @@ const useBookmarks = () => {
   
     try {
       const response = await fetch(
-        import.meta.env.VITE_BACKEND_URL + `/auth/bookmark/${userId}/${eventId}`,
+        import.meta.env.VITE_BACKEND_URL + `/api/v1/events/bookmark/${userId}/${eventId}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -73,6 +79,7 @@ const useBookmarks = () => {
       );
   
       const data = await response.json();
+      console.log("bookmarked ",data);
   
       if (response.ok) {
         setBookmarkedEvents((prev) => {

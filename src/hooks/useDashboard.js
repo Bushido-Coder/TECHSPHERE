@@ -10,15 +10,16 @@ const useDashboard = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await fetch(import.meta.env.VITE_BACKEND_URL + `/auth/profile`, {
+        const res = await fetch(import.meta.env.VITE_BACKEND_URL + `/api/v1/isAuthenticated`, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
         });
 
         const data = await res.json();
-        if (res.ok && data.userId) {
-          setUserId(data.userId);
+        if (res.ok && data.isAuthenticated && data.user?.userId) {
+          setUserId(data.user.userId.trim());  
+          console.log("data for user ifd",data.user.userId);
         } else {
           toast.error("Please log in to access bookmarks.");
         }
@@ -33,11 +34,13 @@ const useDashboard = () => {
 
   useEffect(() => {
     // 🔹 Don't fetch if userId is null
+    console.log("📌 userId in hook:", userId);
     if (!userId) return;
 
     const fetchDashboardData = async () => {
       try {
-        const res = await fetch(import.meta.env.VITE_BACKEND_URL + `/auth/dashboard/${userId}`, {
+        const trimmedUserId = userId.trim();
+        const res = await fetch(import.meta.env.VITE_BACKEND_URL + `/api/v1/events/dashboard/${trimmedUserId}`, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
@@ -64,7 +67,7 @@ const useDashboard = () => {
     fetchDashboardData();
   }, [userId]); 
 
-  console.log("Current userId:", userId); // Debugging
+  console.log("Current userId:", userId); 
 
 
   return { bookmarkedEvents, pastEvents, userId, setBookmarkedEvents };

@@ -6,8 +6,6 @@ import Homepage from './pages/Homepage';
 import Registration from './Components/registrationPopUp.jsx';
 import Nonloginpage from './pages/nonLoginPage.jsx';
 import DashboardHomePage from './pages/dashboardHomePage.jsx';
-import DashboardPastEvents from './pages/dashboardPastEvents.jsx';
-import DashboardBookmarkEvents from './pages/dashboardBookmark.jsx';
 import DetailPage from "./pages/detailpage";
 // import { useState } from "react";
 import useGetIsAuthorized from "./hooks/useGetIsAuthorized.js";
@@ -95,11 +93,10 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Homepage eventdata={eventData} manageLogin={manageLogin} userInfo={userInfo} setUserInfo={setUserInfo} />} />
       <Route path="/detail-page/:eventId" element={<DetailPage userInfo={userInfo} setUserInfo={setUserInfo} />} />
-      <Route path="/nonlogin" element={<Nonloginpage eventdata={eventData} />} />
+      <Route path="/nonlogin" element={<Nonloginpage eventdata={eventData}  userInfo={userInfo} setUserInfo={setUserInfo} />} />
       <Route path="/register" element={<Registration />} />
       <Route path="/dashboard" element={<DashboardHomePage />} />
-      <Route path="/dashboard/past" element={<DashboardPastEvents />} />
-      <Route path="/dashboard/bookmark" element={<DashboardBookmarkEvents />} />
+
     </Routes>
   );
 };

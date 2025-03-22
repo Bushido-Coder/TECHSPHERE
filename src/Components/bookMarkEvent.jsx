@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import Eventcard from './eventCard';
 
-const SavedEvents = ({ bookmarkedEvents }) => {
+const SavedEvents = ({ bookmarkedEvents =[]}) => {
+
   return (
     <div>
       {bookmarkedEvents.length > 0 ? (

@@ -9,7 +9,7 @@ const SearchBar = ({ onSearch, filter }) => {
     console.log("Sending request with search:", query, "and filter:", activeFilter);
 
     try {
-      let url = `${import.meta.env.VITE_BACKEND_URL}api/v1/events/search?search=${query}`;
+      let url = `${import.meta.env.VITE_BACKEND_URL}/api/v1/events/search?search=${query}`;
       
       if (activeFilter) {
           url += `&filter=${activeFilter}`;
@@ -25,7 +25,7 @@ const SearchBar = ({ onSearch, filter }) => {
       const data = await response.json();
       
       if (Array.isArray(data)) {
-        onSearch(query); // Only update search text, don't pass objects
+        onSearch(query); 
       } else {
         console.error("Invalid response format from server:", data);
       }
@@ -39,7 +39,7 @@ const SearchBar = ({ onSearch, filter }) => {
     const value = e.target.value.trim();
     setSearchValue(value);
 
-    // Delay API call (debounce)
+
     clearTimeout(window.searchTimeout);
     window.searchTimeout = setTimeout(() => {
       fetchFilteredEvents(value, filter);
