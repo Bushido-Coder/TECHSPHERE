@@ -40,7 +40,7 @@ const useDashboard = () => {
     const fetchDashboardData = async () => {
       try {
         const trimmedUserId = userId.trim();
-        const res = await fetch(import.meta.env.VITE_BACKEND_URL + `/api/v1/events/dashboard/${trimmedUserId}`, {
+        const res = await fetch(import.meta.env.VITE_BACKEND_URL + `/api/v1/dashboard/${trimmedUserId}`, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
