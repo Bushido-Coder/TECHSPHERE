@@ -5,7 +5,7 @@ import EventOverview from "../Components/detailpage/eventOverview";
 import Footer from "../Components/LandingComponents/Footer";
 import Navbar from "../Components/LandingComponents/Navbar";
 
-const DetailPage = ({userInfo,setUserInfo}) => {
+const DetailPage = ({userInfo,setUserInfo,manageLogin}) => {
   const { eventId } = useParams();
   const { eventData, loading, error } = useFetchEvents(eventId);
 // console.log(eventData);
@@ -21,8 +21,8 @@ const DetailPage = ({userInfo,setUserInfo}) => {
   // console.log("details", details);
   return (
     <div className="styles.detailpage_main_container">
-        <Navbar userInfo={userInfo} setUserInfo={setUserInfo}/>
-        <EventOverview eventOverview={eventOverview } eventId={eventId} userInfo={userInfo}/>
+        <Navbar userInfo={userInfo} setUserInfo={setUserInfo} manageLogin={manageLogin}/>
+        <EventOverview eventOverview={eventOverview } eventId={eventId} userInfo={userInfo} manageLogin={manageLogin}/>
         <EventMoreDetails details={details}></EventMoreDetails>
         <Footer></Footer>
     </div>

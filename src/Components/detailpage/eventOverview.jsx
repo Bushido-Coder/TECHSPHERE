@@ -40,13 +40,16 @@ import useFetchEvents from "../../hooks/useFetchEvents";
 import styles from "./eventOverview.module.css";
 import RegistrationForm from "./RegistrationFormPopup";
 import SuccessPopup from "./SuccessPopup";
+import { toast } from "react-toastify";
+import LoginSignupPopup from "../LandingComponents/loginSignupPopUp";
 
-const EventOverview = ({ eventOverview, eventId,userInfo }) => {
+const EventOverview = ({ eventOverview, eventId,userInfo,manageLogin }) => {
   const { eventData, loading, error } = useFetchEvents(eventId);
   // console.log(eventData,"eventdata");
   const [showForm, setShowForm] = useState(false);
   const [formFields, setFormFields] = useState([]);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showLoginSignupPopup, setShowLoginSignupPopup] = useState(false);
 
   // Show loading or error states
   if (loading) return <p>Loading event details...</p>;
@@ -60,6 +63,11 @@ const EventOverview = ({ eventOverview, eventId,userInfo }) => {
   const { image, heading, subtitle, button, subdetails } = eventOverview;
 
   const handleRegisterClick = async () => {
+    if (!userInfo?.isAuthenticated) {
+      toast.warning("Please login/signup to register."); // Show toast message
+      setShowLoginSignupPopup(true); // Show login/signup popup
+      return;
+    }
     if (eventData.registration) {
       setFormFields(eventData.registration); // Use already fetched registration fields
       setShowForm(true);
@@ -111,6 +119,7 @@ const EventOverview = ({ eventOverview, eventId,userInfo }) => {
         />
       )}
       {showSuccess && <SuccessPopup onClose={() => setShowSuccess(false)} />}
+      {showLoginSignupPopup && <LoginSignupPopup onClose={() => setShowLoginSignupPopup(false)} manageLogin={manageLogin }/>}
     </div>
   );
 };

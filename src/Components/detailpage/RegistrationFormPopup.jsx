@@ -48,6 +48,7 @@
 
 import { useState } from "react";
 import styles from "./RegistrationFormPopup.module.css";
+import { toast } from "react-toastify";
 
 const RegistrationForm = ({ fields, eventId, onClose, onSuccess,userInfo }) => {
   console.log("registrationform",userInfo);
@@ -68,7 +69,7 @@ const RegistrationForm = ({ fields, eventId, onClose, onSuccess,userInfo }) => {
     const requestBody = {
       registered: [
         {
-          userId, // Placeholder, replace later with logged-in user ID
+          userId, //received from props using userinfo from app
           registeredDetails: Object.keys(formData).map((key) => ({
             title: key,
             value: formData[key],
@@ -86,13 +87,16 @@ const RegistrationForm = ({ fields, eventId, onClose, onSuccess,userInfo }) => {
         body: JSON.stringify(requestBody),
       });
 
+      const data = await response.json();
+
       if (response.ok) {
         onSuccess(); // Show success popup
       } else {
-        console.error("Registration failed");
+        toast.error(data.message); // Show proper error message
       }
     } catch (error) {
-      console.error("Error:", error);
+      // toast.error("Error while registering!", error);
+      toast.error(`Error while registering! ${error.message || "Please try again."}`);
     } finally {
       setLoading(false);
     }

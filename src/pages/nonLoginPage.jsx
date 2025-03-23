@@ -4,7 +4,7 @@ import Footer from "../Components/LandingComponents/Footer.jsx";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Pagination } from "@mui/material";
-const NonLoginPage = () => {
+const NonLoginPage = ({userInfo,setUserInfo,manageLogin}) => {
   const [events, setEvents] = useState([]);
   const [view, setView] = useState("all");
   const [sortBy, setSortBy] = useState("");
@@ -62,7 +62,7 @@ const NonLoginPage = () => {
 
   return (
     <div className={styles.eventContainer}>
-      <Navbar />
+      <Navbar userInfo={userInfo} setUserInfo={setUserInfo} manageLogin={manageLogin}/>
       <h2 className={styles.eventTitle}>Explore Events</h2>
 
       <div className={styles.sortContainer}>

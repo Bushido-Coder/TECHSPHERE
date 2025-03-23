@@ -1,5 +1,5 @@
 
-import {  Routes, Route,} from "react-router";
+import {  Routes, Route, Navigate,} from "react-router";
 import { useState} from "react";
 import './App.css';
 import Homepage from './pages/Homepage';
@@ -12,6 +12,7 @@ import DetailPage from "./pages/detailpage";
 // import { useState } from "react";
 import useGetIsAuthorized from "./hooks/useGetIsAuthorized.js";
 import useFetchEvents from "./hooks/useFetchEvents.js";
+import Dashboard from "./pages/dashboardHomePage.jsx";
 
 // const App=()=>
 //     {
@@ -86,6 +87,9 @@ const App = () => {
     });
   };
 
+  const {isAuthenticated} = userInfo;
+
+
   console.log("userInfo",userInfo);
 
   if (loading) return <p>Loading events...</p>;
@@ -94,12 +98,13 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Homepage eventdata={eventData} manageLogin={manageLogin} userInfo={userInfo} setUserInfo={setUserInfo} />} />
-      <Route path="/detail-page/:eventId" element={<DetailPage userInfo={userInfo} setUserInfo={setUserInfo} />} />
-      <Route path="/nonlogin" element={<Nonloginpage eventdata={eventData} />} />
+      <Route path="/detail-page/:eventId" element={<DetailPage userInfo={userInfo} setUserInfo={setUserInfo} manageLogin={manageLogin} />} />
+      <Route path="/nonlogin" element={<Nonloginpage eventdata={eventData} userInfo={userInfo} setUserInfo={setUserInfo} manageLogin={manageLogin}/>} />
       <Route path="/register" element={<Registration />} />
-      <Route path="/dashboard" element={<DashboardHomePage />} />
-      <Route path="/dashboard/past" element={<DashboardPastEvents />} />
-      <Route path="/dashboard/bookmark" element={<DashboardBookmarkEvents />} />
+      <Route path="/dashboard" element={isAuthenticated ? <Dashboard userInfo={userInfo} setUserInfo={setUserInfo}/> : <Navigate to="/"/> } />
+      {/* <Route path="/dashboard" element={<DashboardHomePage />} /> */}
+      {/* <Route path="/dashboard/past" element={<DashboardPastEvents />} /> */}
+      {/* <Route path="/dashboard/bookmark" element={<DashboardBookmarkEvents />} /> */}
     </Routes>
   );
 };
