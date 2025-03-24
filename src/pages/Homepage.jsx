@@ -23,9 +23,13 @@ const Homepage = ({manageLogin,userInfo,setUserInfo,eventdata}) => {
       console.error("Invalid search text:", searchText);
       return true;
     }
-
-    return event.name.toLowerCase().includes(searchText.toLowerCase());
+  
+    const matchesSearch = event.name.toLowerCase().includes(searchText.toLowerCase());
+    const matchesFilter = filter === 'all' || event.type.toLowerCase() === filter;
+  
+    return matchesSearch && matchesFilter;
   });
+  
 
   console.log("Filtered Events:", filteredEvents);
 
@@ -55,22 +59,22 @@ const Homepage = ({manageLogin,userInfo,setUserInfo,eventdata}) => {
     </button>
 
     <button 
-      onClick={() => setFilter('workshop')} 
-      className={`${styles.webinar} ${filter === 'workshop' ? styles.active : ''}`}
+      onClick={() => setFilter('webinar')} 
+      className={`${styles.webinar} ${filter === 'webinar' ? styles.active : ''}`}
     >
       <div className={styles.logo}><img src = "/src/TestImages/webinar.svg"></img></div><div className={styles.logotext}> Webinar</div>
     </button>
 
     <button 
-      onClick={() => setFilter('concert')} 
-      className={`${styles.workshop} ${filter === 'concert' ? styles.active : ''}`}
+      onClick={() => setFilter('workshop')} 
+      className={`${styles.workshop} ${filter === 'workshop' ? styles.active : ''}`}
     >
       <div className={styles.logo}><img src = "/src/TestImages/workshop.svg"></img></div><div className={styles.logotext}> Workshop</div>
     </button>
 
     <button 
-      onClick={() => setFilter('seminar')} 
-      className={`${styles.conference} ${filter === 'seminar' ? styles.active : ''}`}
+      onClick={() => setFilter('conference')} 
+      className={`${styles.conference} ${filter === 'conference' ? styles.active : ''}`}
     >
       <div className={styles.logo}><img src = "/src/TestImages/conference.svg"></img></div><div className={styles.logotext}> Conference</div>
     </button>

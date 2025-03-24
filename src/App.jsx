@@ -10,6 +10,7 @@ import DetailPage from "./pages/detailpage";
 // import { useState } from "react";
 import useGetIsAuthorized from "./hooks/useGetIsAuthorized.js";
 import useFetchEvents from "./hooks/useFetchEvents.js";
+import ResetPassword from "./pages/resetPasswordPage.jsx";
 
 // const App=()=>
 //     {
@@ -96,6 +97,8 @@ const App = () => {
       <Route path="/nonlogin" element={<Nonloginpage eventdata={eventData}  userInfo={userInfo} setUserInfo={setUserInfo} />} />
       <Route path="/register" element={<Registration />} />
       <Route path="/dashboard" element={<DashboardHomePage />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
+
 
     </Routes>
   );

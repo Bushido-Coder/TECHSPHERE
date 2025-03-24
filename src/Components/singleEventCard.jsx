@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./eventCard.css";
 
-const SingleEventCard = ({ event, imageBg }) => {
+const SingleEventCard = ({ event, imageBg}) => {
   // console.log("event",event);
   const navigate = useNavigate();
   const [bookmarked, setBookmarked] = useState(false);
@@ -11,17 +11,17 @@ const SingleEventCard = ({ event, imageBg }) => {
     // navigate("/detail-page");
     navigate(`/detail-page/${event._id}`) 
   };
-   const formatDate = (date) => {
+  const formatDate = (date) => {
     const d = new Date(date);
-    const day = String(d.getDate()).padStart(2, "0");
+    const day = String(d.getUTCDate()).padStart(2, "0");
     const month = d.toLocaleString("default", { month: "short" });
-    const year = d.getFullYear();
+    const year = d.getUTCFullYear();
     return `${month} ${day}, ${year}`;
   };
   const formattedStartDate = formatDate(event.start);
 
   return (
-    <div className="event-card"onClick={handleViewDetails}>
+    <div className="event-card">
       <div className="image-container" style={{ backgroundColor: imageBg }}>
         <img className="img" src="/Illustration.png" alt="Illustration" />
       </div>
