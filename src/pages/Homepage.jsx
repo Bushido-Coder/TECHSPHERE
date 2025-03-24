@@ -7,16 +7,33 @@ import Testimonials from '../Components/LandingComponents/TestimonialCard';
 import Milestones from '../Components/LandingComponents/Milestones'; 
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const Homepage = ({manageLogin,userInfo,setUserInfo,eventdata}) => {
   // console.log("HomepAGE",userInfo);
 
+  const [searchText, setSearchText] = useState(""); 
   const [filter, setFilter] = useState('all'); 
   const navigate = useNavigate();
 
+  // console.log("Event Data:", eventdata);
+  // console.log("Current Search Text Type:", typeof searchText, "Value:", searchText);
+
+  const filteredEvents = eventdata.filter(event => {
+    if (typeof searchText !== "string") {
+      console.error("Invalid search text:", searchText);
+      return true;
+    }
+
+    return event.name.toLowerCase().includes(searchText.toLowerCase());
+  });
+
+  // console.log("Filtered Events:", filteredEvents);
+
   return (
     <div className={styles.homepage}>
-      <Navbar manageLogin={manageLogin} userInfo={userInfo} setUserInfo={setUserInfo}/>
+      {/* <Navbar manageLogin={manageLogin} userInfo={userInfo} setUserInfo={setUserInfo}/> */}
+      <Navbar onSearch={(value)=>setSearchText(value?.toString()||"")} manageLogin={manageLogin} userInfo={userInfo} setUserInfo={setUserInfo} />
       <section className={styles.banner}>
         <div className={styles.bannerText}>
           <h1>Your Gateway to Tech Events, Workshops & Hackathons</h1>
@@ -62,7 +79,12 @@ const Homepage = ({manageLogin,userInfo,setUserInfo,eventdata}) => {
 
         </div>
         <div className={styles.eventDisplay}>
-          <EventCard eventdata={eventdata}/>
+          {/* <EventCard eventdata={eventdata}/> */}
+          {filteredEvents.length > 0 ? (
+            filteredEvents.map((event, index) => <EventCard key={index} eventdata={event} />)
+          ) : (
+            <p className={styles.noEventsText}>No events found.</p>
+          )}
         </div>
         <div className={styles.viewAllButton}>
         {/* <button className={styles.viewAll}>View All</button> */}
@@ -110,6 +132,14 @@ const Homepage = ({manageLogin,userInfo,setUserInfo,eventdata}) => {
       <Footer />
     </div>
   );
+};
+
+Homepage.propTypes = {
+  eventdata: PropTypes.array.isRequired,
+  manageLogin: PropTypes.func.isRequired,
+  userInfo: PropTypes.object.isRequired,
+  setUserInfo: PropTypes.func.isRequired,
+
 };
 
 export default Homepage;

@@ -4,6 +4,9 @@ import Footer from "../Components/LandingComponents/Footer.jsx";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Pagination } from "@mui/material";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import useBookmarks from "../hooks/useBookmark.js"; 
 const NonLoginPage = ({userInfo,setUserInfo,manageLogin}) => {
   const [events, setEvents] = useState([]);
   const [view, setView] = useState("all");
@@ -13,6 +16,9 @@ const NonLoginPage = ({userInfo,setUserInfo,manageLogin}) => {
   const [duration, setDuration] = useState("");
   const [page, setPage] = useState(1);
   const [error, setError] = useState(null);
+
+  const [searchText, setSearchText] = useState("");
+  const { bookmarkedEvents, toggleBookmark } = useBookmarks({userInfo});
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -25,7 +31,7 @@ const NonLoginPage = ({userInfo,setUserInfo,manageLogin}) => {
           isFree: isFree.toString(),
           duration,
           page,
-          size: 20,
+          size: 10,
         });
 
         const response = await fetch(
@@ -60,11 +66,19 @@ const NonLoginPage = ({userInfo,setUserInfo,manageLogin}) => {
     return `${month} ${day}, ${year}`;
   };
 
+  const filteredEvents = events.filter((event) => {
+    if (typeof searchText !== "string") {
+      console.error("Invalid search text:", searchText);
+      return true; // Return all events if searchText is invalid
+    }
+    return event.name.toLowerCase().includes(searchText.toLowerCase());
+  });
+
   return (
     <div className={styles.eventContainer}>
-      <Navbar userInfo={userInfo} setUserInfo={setUserInfo} manageLogin={manageLogin}/>
+      <Navbar onSearch={setSearchText} userInfo={userInfo} setUserInfo={setUserInfo} manageLogin={manageLogin}/>
       <h2 className={styles.eventTitle}>Explore Events</h2>
-
+      <ToastContainer />
       <div className={styles.sortContainer}>
         <select onChange={(e) => setView(e.target.value)} value={view}>
           <option value="all">View Hackathon</option>
@@ -81,13 +95,12 @@ const NonLoginPage = ({userInfo,setUserInfo,manageLogin}) => {
         </select>
 
         <select onChange={(e) => setPrice(e.target.value)} value={price}>
-          <option value="">Price Pool</option>
-          <option value="$8,000">$8,000</option>
-          <option value="$9,500">$9,500</option>
-          <option value="$10,000">$10,000</option>
-          <option value="$11,000">$11,000</option>
-          <option value="$12,000">$12,000</option>
-          <option value="$15,000">$15,000</option>
+          <option value="">Price</option>
+          <option value="">10000</option>
+          <option value="">9000</option>
+          <option value="">8000</option>
+          <option value="">18000</option>
+          <option value="">20000</option>
         </select>
 
         <select onChange={(e) => setIsFree(e.target.value)} value={isFree}>
@@ -109,25 +122,26 @@ const NonLoginPage = ({userInfo,setUserInfo,manageLogin}) => {
       {error && <p className={styles.errorText}>Error: {error}</p>}
 
       <div className={styles.eventGrid}>
-        {events.length > 0 ? (
-          events.map((event) => (
+        {filteredEvents.length > 0 ? (
+          filteredEvents.map((event) => (
             <div key={event._id} className={styles.eventCard}>
               <p className={styles.eventLocation}>{event.location}</p>
+              <div className={styles.bookmarkIcon} onClick={() => toggleBookmark(event._id)}>
+                <img 
+                  src={bookmarkedEvents.has(event._id) ? "/bookmark (1).png" : "/bookmark.png"} 
+                  alt="Bookmark Icon"
+                />
+              </div>
               <h3 className={styles.eventName}>{event.name}</h3>
               <p className={styles.eventDescription}>{event.description}</p>
               <p className={styles.eventDetail}>
-                Start:{" "}
-                <span className={styles.boldText}>
-                  {formatDate(event.start)}
-                </span>
+              Start: <span className={styles.boldText}>{formatDate(event.start)}</span>
               </p>
               <p className={styles.eventDetail}>
-                Duration:{" "}
-                <span className={styles.boldText}>{event.duration}</span>
+              Duration: <span className={styles.boldText}>{event.duration}</span>
               </p>
               <p className={styles.eventDetail}>
-                Prize Pool:{" "}
-                <span className={styles.boldText}>{event.prize}</span>
+              Prize Pool: <span className={styles.boldText}>{event.prize}</span>
               </p>
               <button onClick={handleViewDetails} className="viewButton">
                 View details

@@ -1,10 +1,14 @@
-import React, { useState } from "react";
-import styles from "./Navbar.module.css";
+// import React, { useState } from "react";
+// import styles from "./Navbar.module.css";
+import { useState } from "react";
+import PropTypes from "prop-types";
+import styles from "../LandingComponents/Navbar.module.css";
 import Logo from "/src/assets/logo.svg";
 import LoginSignupPopup from "./loginSignupPopUp"; // Importing the popup component
 import useLogout from "../../hooks/useLogout";
+import SearchBar from "../searchBar.jsx";
 
-const Navbar = ({manageLogin,userInfo,setUserInfo}) => {
+const Navbar = ({manageLogin,userInfo,setUserInfo,onSearch,filter=""  }) => {
    console.log("Navbar",userInfo);
 
   const {isAuthenticated, email}=userInfo || {};
@@ -39,12 +43,14 @@ const Navbar = ({manageLogin,userInfo,setUserInfo}) => {
   
   
   return (
+    <>
     <nav className={styles.navbar}>
       <div className={styles.logo}>
         <img src={Logo} alt="Logo" className={styles.logoImage} />
       </div>
       <div className={styles.searchContainer}>
-        <input type="text" placeholder="Search..." className={styles.searchBar} />
+        {/* <input type="text" placeholder="Search..." className={styles.searchBar} /> */}
+        <SearchBar onSearch={(value) => onSearch(value?.toString() || "")} filter={filter} />
       </div>
       <div className={styles.buttons}>
         {isAuthenticated ? (
@@ -74,7 +80,18 @@ const Navbar = ({manageLogin,userInfo,setUserInfo}) => {
       {/* Render the login/signup popup when needed */}
       {showPopup && <LoginSignupPopup manageLogin={manageLogin} onClose={() => setShowPopup(false)} />}
     </nav>
+    </>
   );
+};
+
+Navbar.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+  filter: PropTypes.string,
+  SetFilter: PropTypes.func,
+  manageLogin: PropTypes.func.isRequired,
+  userInfo: PropTypes.object.isRequired,
+  setUserInfo: PropTypes.func.isRequired,
+
 };
 
 export default Navbar;
