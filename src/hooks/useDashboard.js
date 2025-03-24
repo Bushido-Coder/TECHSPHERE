@@ -37,13 +37,14 @@ const useDashboard = ({userInfo}) => {
     // 🔹 Don't fetch if userId is null
     if (!userId) return;
 
-    if (!userId) 
+    if (!userId) //Debugging
     console.log("No UserId!");
 
 
     const fetchDashboardData = async () => {
       try {
-        const res = await fetch(import.meta.env.VITE_BACKEND_URL + `/api/v1/dashboard/${userId}`, {
+        const trimmedUserId = userId.trim();
+        const res = await fetch(import.meta.env.VITE_BACKEND_URL + `/api/v1/dashboard/${trimmedUserId}`, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
@@ -56,9 +57,10 @@ const useDashboard = ({userInfo}) => {
 
 
         if (res.ok) {
-          // setBookmarkedEvents(new Set(data.bookmarks || []));
+          setBookmarkedEvents(new Set(data.bookmarks || []));
+          setPastEvents(data.pastEvents || []);
           setRegisteredEvents(new Set(data.registeredEvents || []));
-          // setPastEvents(data.pastEvents || []);
+          
         } else {
           toast.error("Please log in to access the dashboard.");
         }

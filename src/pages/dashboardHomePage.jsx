@@ -19,11 +19,10 @@
 // export default DashboardHomePage;
 
 import { useState } from "react";
-import MenuBar from "../components/menuBar.jsx";
-import RegisteredEvents from "../components/registredEvent.jsx";
-// import SavedEvents from "../components/bookMarkEvent.jsx";
-// import PastEvents from "../components/pastEvent.jsx";
-// import Dashboardevent from "../Hook/useDashboard.js"; 
+import MenuBar from "../Components/menuBar.jsx";
+import RegisteredEvents from "../Components/registredEvent.jsx";
+import SavedEvents from "../Components/bookMarkEvent.jsx";
+import PastEvents from "../Components/pastEvent.jsx";
 import useDashboard from "../hooks/useDashboard.js";
 import "./dashboardHomePage.css";
 import { useNavigate } from "react-router-dom";
