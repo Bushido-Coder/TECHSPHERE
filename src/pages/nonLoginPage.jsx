@@ -7,6 +7,7 @@ import { Pagination } from "@mui/material";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useBookmarks from "../hooks/useBookmark.js"; 
+import Eventcard from "../Components/eventCard.jsx";
 const NonLoginPage = ({userInfo,setUserInfo,manageLogin}) => {
   const [events, setEvents] = useState([]);
   const [view, setView] = useState("all");
@@ -122,7 +123,7 @@ const NonLoginPage = ({userInfo,setUserInfo,manageLogin}) => {
       {error && <p className={styles.errorText}>Error: {error}</p>}
 
       <div className={styles.eventGrid}>
-        {filteredEvents.length > 0 ? (
+        {/* {filteredEvents.length > 0 ? (
           filteredEvents.map((event) => (
             <div key={event._id} className={styles.eventCard}>
               <p className={styles.eventLocation}>{event.location}</p>
@@ -150,7 +151,12 @@ const NonLoginPage = ({userInfo,setUserInfo,manageLogin}) => {
           ))
         ) : (
           <p className={styles.noEventsText}>No events found.</p>
-        )}
+        )} */}
+        {filteredEvents.length > 0 ? (
+                    filteredEvents.map((event, index) => <Eventcard key={index} eventdata={event} userInfo={userInfo} manageLogin={manageLogin} />)
+                  ) : (
+                    <p className={styles.noEventsText}>No events found.</p>
+                  )}
       </div>
 
       <div className={styles.paginationContainer}>

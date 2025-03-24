@@ -4,7 +4,7 @@ import "./eventCard.css";
 import SingleEventCard from "./singleEventCard";
 import PropTypes from "prop-types";
 
-const Eventcard = ({eventdata=[]}) => {
+const Eventcard = ({eventdata=[],userInfo,manageLogin}) => {
   const eventArray = Array.isArray(eventdata) ? eventdata : [eventdata];
   // console.log("1",eventdata);
 //   return (
@@ -21,7 +21,7 @@ return (
   <>
     {
     eventArray.map((event, index) => (
-      <SingleEventCard key={event._id} event={event} imageBg={event.imageBg} />
+      <SingleEventCard key={event._id} event={event} imageBg={event.imageBg} userInfo={userInfo} manageLogin={manageLogin}/>
     ))}
   </>
 );
