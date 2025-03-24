@@ -81,7 +81,7 @@ const Homepage = ({manageLogin,userInfo,setUserInfo,eventdata}) => {
         <div className={styles.eventDisplay}>
           {/* <EventCard eventdata={eventdata}/> */}
           {filteredEvents.length > 0 ? (
-            filteredEvents.map((event, index) => <EventCard key={index} eventdata={event} />)
+            filteredEvents.map((event, index) => <EventCard key={index} eventdata={event} manageLogin={manageLogin} userInfo={userInfo}/>)
           ) : (
             <p className={styles.noEventsText}>No events found.</p>
           )}
