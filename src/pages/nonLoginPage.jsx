@@ -58,10 +58,8 @@ const Nonloginpage = () => {
   }, [view, sortBy, price, isFree, duration, page]);
 
   const navigate = useNavigate();
-  const handleViewDetails = () => {
-    // navigate("/detail-page");
-    navigate(`/detail-page/${event._id}`) 
-  };
+  // const handleViewDetails = () =>  navigate(`/detail-page/${event._id}`)
+  const handleViewDetails = () => navigate("/detail-page");
 
   const formatDate = (date) => {
     const d = new Date(date);
