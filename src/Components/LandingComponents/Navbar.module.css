@@ -22,6 +22,12 @@
 .logoImage {
   height: 30px; 
   width: auto; 
+  cursor: pointer; /* Makes it look clickable */
+  transition: opacity 0.2s ease-in-out;
+}
+
+.logoImage:hover {
+  opacity: 0.8; /* Subtle hover effect */
 }
 
 .searchContainer {

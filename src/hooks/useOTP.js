@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-const useOTP=({setIsOtpSent, setIsResendAllowed, setShowOtpSection })=>{
+const useOTP=({setIsOtpSent, setIsResendAllowed, setShowOtpSection, setIsSendingOtp  })=>{
     const sendOtp= async (email,isResend=false)=>{
         try{
             const values={email, isResend}
@@ -35,6 +35,9 @@ const useOTP=({setIsOtpSent, setIsResendAllowed, setShowOtpSection })=>{
             console.log(err);
             toast.error(err.message);
         }
+        finally {
+            setIsSendingOtp(false);
+          }
 
     };
     return {sendOtp};

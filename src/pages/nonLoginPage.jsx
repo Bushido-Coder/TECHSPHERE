@@ -81,12 +81,14 @@ const NonLoginPage = ({userInfo,setUserInfo,manageLogin}) => {
       <h2 className={styles.eventTitle}>Explore Events</h2>
       <ToastContainer />
       <div className={styles.sortContainer}>
+        <div>
         <select onChange={(e) => setView(e.target.value)} value={view}>
           <option value="all">View Hackathon</option>
           <option value="upcoming">Upcoming Events</option>
           <option value="past">Past Events</option>
         </select>
-
+        </div>
+        <div>
         <select onChange={(e) => setSortBy(e.target.value)} value={sortBy}>
           <option value="">Sort By</option>
           <option value="date">Sort By Date</option>
@@ -94,7 +96,9 @@ const NonLoginPage = ({userInfo,setUserInfo,manageLogin}) => {
           <option value="duration">Sort By Duration</option>
           <option value="prize">Sort By Prize</option>
         </select>
+        </div>
 
+        <div>
         <select onChange={(e) => setPrice(e.target.value)} value={price}>
           <option value="">Price</option>
           <option value="">10000</option>
@@ -103,12 +107,15 @@ const NonLoginPage = ({userInfo,setUserInfo,manageLogin}) => {
           <option value="">18000</option>
           <option value="">20000</option>
         </select>
-
+        </div>
+        <div>
         <select onChange={(e) => setIsFree(e.target.value)} value={isFree}>
           <option value="false">Paid</option>
           <option value="true">Free</option>
         </select>
+        </div>
 
+        <div>
         <select onChange={(e) => setDuration(e.target.value)} value={duration}>
           <option value="">Time</option>
           <option value="36 Hours">36 Hours</option>
@@ -118,6 +125,7 @@ const NonLoginPage = ({userInfo,setUserInfo,manageLogin}) => {
           <option value="4 Days">4 Days</option>
           <option value="5 Days">5 Days</option>
         </select>
+        </div>
       </div>
 
       {error && <p className={styles.errorText}>Error: {error}</p>}

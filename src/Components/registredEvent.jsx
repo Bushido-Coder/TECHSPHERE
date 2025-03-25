@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import Eventcard from './eventCard';
+import styles from './registredEvent.module.css';
+
 
 const RegisteredEvents = ({ registeredEvents }) => {
   return (
-    <div>
+    <div className={styles.eventDisplay_registeredEvents}>
       {registeredEvents.length > 0 ? (
         <Eventcard eventdata={registeredEvents} />
       ) : (

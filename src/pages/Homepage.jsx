@@ -37,7 +37,7 @@ const Homepage = ({manageLogin,userInfo,setUserInfo,eventdata}) => {
       <section className={styles.banner}>
         <div className={styles.bannerText}>
           <h1>Your Gateway to Tech Events, Workshops & Hackathons</h1>
-          <p>Explore, Apply, and Innovate with the best tech events around the world.</p>
+          <p className={styles.highlightText}>Explore, Apply, and Innovate with the best tech events around the world.</p>
           {/* <button className={styles.registerButton}><Link to="/nonlogin"> Start Exploring</Link></button> */}
           <Link to="/nonlogin" className={styles.registerButton}> Start Exploring</Link>
 

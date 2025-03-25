@@ -77,6 +77,11 @@
 
 }
 
+.highlightText {
+  color: #FFFFFF; /* Use any color code */
+  font-weight: bold; /* Optional: make text bold */
+}
+
 .workshop{
   border-radius: 4px;
   padding:8px 42px;
