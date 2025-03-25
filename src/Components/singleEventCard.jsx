@@ -21,9 +21,11 @@ const SingleEventCard = ({ event, imageBg, userInfo, manageLogin }) => {
   };
    const formatDate = (date) => {
     const d = new Date(date);
-    const day = String(d.getDate()).padStart(2, "0");
+    // const day = String(d.getDate()).padStart(2, "0");
+    const day = String(d.getUTCDate()).padStart(2, "0");
     const month = d.toLocaleString("default", { month: "short" });
-    const year = d.getFullYear();
+    // const year = d.getFullYear();
+    const year = d.getUTCFullYear();
     return `${month} ${day}, ${year}`;
   };
   const formattedStartDate = formatDate(event.start);
