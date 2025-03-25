@@ -4,6 +4,62 @@ import useOTP from "../../hooks/useOTP";
 import useSignup from "../../hooks/useSignup";
 import useLogin from "../../hooks/useLogin";
 import { toast } from "react-toastify";
+import PropTypes from "prop-types";
+
+
+const ForgotPassword = () => {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false); 
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/auth/forgotPassword`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        }
+      );
+
+      const data = await response.json();
+      console.log("Response Data:", data); 
+
+      if (response.ok) {
+        setMessage("Reset link sent to your email.");
+        setIsSubmitted(true);
+      } else {
+        setMessage(data.message || "Something went wrong!");
+      }
+    } catch (error) {
+      console.error("Error sending request:", error);
+      setMessage("Failed to send request. Please try again.");
+    }
+  };
+
+  return (
+    <div>
+      <h2>Forgot Password</h2>
+      {isSubmitted ? (
+        <p>{message}</p> 
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <button type="submit">Reset Password</button>
+        </form>
+      )}
+    </div>
+  );
+};
 
 const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
   const [isOtpSent, setIsOtpSent] = useState(false);
@@ -183,12 +239,15 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
             </button>
           </div>
 
-          {!showOtpSection ? (
+          {isResetPassword ? (
+            <ForgotPassword />
+          ) : (
+          !showOtpSection ? (
             <form onSubmit={(e) => isLogin ? handleLogin(e) : handleSendOtp(e, false)}>
               <input type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} required />
               <input type="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required />
               {isLogin && (
-                <p className={styles.resetPassword} onClick={sendResetOtp}>
+                <p className={styles.resetPassword} onClick={() => setIsResetPassword(true)}>
                   Reset password?
                 </p>
               )}
@@ -196,7 +255,7 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
               {/* <button type="submit">{isLogin ? "Login" : "Send OTP"}</button> */}
             </form>
           ) : (
-            <form onSubmit={isResetPassword ? resetPassword : handleCreateUser}>
+            <form onSubmit={handleCreateUser}>
               <div className={styles.otpContainer}>
                 <p>Enter the OTP sent to your email</p>
                 <div className={styles.otpInputs}>
@@ -213,16 +272,16 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
                 </div>
       <button type="button" hidden={!isResendAllowed} onClick={(e)=>handleSendOtp(e,true)}>Resend</button>
 
-                {isResetPassword && (
+                {/* {isResetPassword && (
                   <input type="password" placeholder="Enter new password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required />
-                )}
+                )} */}
                 {/* <button type="submit">{isResetPassword ? "Reset Password" : "Verify OTP"}</button> */}
                 <button type="submit" disabled={isRegistering}>
   {isResetPassword ? "Reset Password" : isRegistering ? "Registering..." : "Verify OTP"}
 </button>
               </div>
             </form>
-          )}
+          ))}
 
           <div className={styles.thirdPartyAuth}>
             <button onClick={() => toast("Login with Google")}>Login with Google</button>
@@ -233,6 +292,12 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
       </div>
     </div>
   );
+};
+
+LoginSignupPopup.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  userInfo: PropTypes.object,
+  manageLogin: PropTypes.func.isRequired,
 };
 
 export default LoginSignupPopup;

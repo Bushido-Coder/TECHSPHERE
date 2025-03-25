@@ -7,6 +7,7 @@ import Registration from './Components/registrationPopUp.jsx';
 import Nonloginpage from './pages/nonLoginPage.jsx';
 import DashboardHomePage from './pages/dashboardHomePage.jsx';
 import DetailPage from "./pages/detailpage";
+import ResetPassword from "./pages/resetPasswordPage.jsx";
 // import { useState } from "react";
 import useGetIsAuthorized from "./hooks/useGetIsAuthorized.js";
 import useFetchEvents from "./hooks/useFetchEvents.js";
@@ -100,6 +101,7 @@ const App = () => {
       <Route path="/nonlogin" element={<Nonloginpage eventdata={eventData} userInfo={userInfo} setUserInfo={setUserInfo} manageLogin={manageLogin}/>} />
       <Route path="/register" element={<Registration />} />
       <Route path="/dashboard" element={isAuthenticated ? <DashboardHomePage userInfo={userInfo} setUserInfo={setUserInfo}/> : <Navigate to="/"/> } />
+      <Route path="/reset-password" element={<ResetPassword />} />
       {/* <Route path="/dashboard" element={<DashboardHomePage />} /> */}
       {/* <Route path="/dashboard/past" element={<DashboardPastEvents />} /> */}
       {/* <Route path="/dashboard/bookmark" element={<DashboardBookmarkEvents />} /> */}
