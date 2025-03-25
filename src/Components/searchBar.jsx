@@ -36,7 +36,7 @@ const SearchBar = ({ onSearch, filter }) => {
   };
 
   const handleSearchChange = (e) => {
-    const value = e.target.value.trim();
+    const value = e.target.value;
     setSearchValue(value);
 
 
