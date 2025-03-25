@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import Eventcard from './eventCard';
+import styles from './bookmarkEvent.module.css';
+
 
 const SavedEvents = ({ bookmarkedEvents =[]}) => {
 
   return (
-    <div>
+    <div className={styles.eventDisplay_savedEvents}>
       {bookmarkedEvents.length > 0 ? (
         <Eventcard eventdata={bookmarkedEvents} />
       ) : (

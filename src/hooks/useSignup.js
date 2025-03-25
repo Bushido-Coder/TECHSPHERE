@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-const useSignup = ({ setIsResendAllowed,onClose}) => {
+const useSignup = ({ setIsResendAllowed,onClose, setIsRegistering }) => {
   const registerUser = async ({  email, password, otp }) => {
     try {
       const res = await fetch(import.meta.env.VITE_BACKEND_URL +"/api/v1/auth/signup", {
@@ -27,6 +27,9 @@ const useSignup = ({ setIsResendAllowed,onClose}) => {
       }
     } catch (err) {
       toast.error(err.message);
+    }
+    finally {
+      setIsRegistering(false);
     }
   };
   return { registerUser };

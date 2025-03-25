@@ -9,8 +9,10 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [showOtpSection, setShowOtpSection] = useState(false);
   const [isResendAllowed, setIsResendAllowed] = useState(false);
-  const { sendOtp } = useOTP({ setIsOtpSent, setIsResendAllowed, setShowOtpSection });
-  const {registerUser}= useSignup({setIsResendAllowed,onClose});
+  const [isSendingOtp, setIsSendingOtp] = useState(false);
+  const [isRegistering, setIsRegistering] = useState(false);
+  const { sendOtp } = useOTP({ setIsOtpSent, setIsResendAllowed, setShowOtpSection,setIsSendingOtp });
+  const {registerUser}= useSignup({setIsResendAllowed,onClose,setIsRegistering});
   const {login,loading}=useLogin({manageLogin,onClose});
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
@@ -49,7 +51,9 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
         toast.error("Invalid Email!");
         return;
       }
-      sendOtp(email, isResend);
+      setIsSendingOtp(true);
+      await sendOtp(email, isResend);
+      setIsSendingOtp(false);
 
     // try {
     //   const response = await fetch("http://localhost:5000/api/auth/signup", {
@@ -72,12 +76,15 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
   const handleCreateUser = async (e) => {
     e.preventDefault();
     const otp = otpInputs.current.map(input => input.value).join("");
-    registerUser({
-      otp,
-      password,
-      // name: fullName,//Passed as argument to function with name (not fullname)
-      email
-  });
+    setIsRegistering(true);
+    await registerUser({ otp, password, email });
+    setIsRegistering(false);
+  //   registerUser({
+  //     otp,
+  //     password,
+  //     // name: fullName,//Passed as argument to function with name (not fullname)
+  //     email
+  // });
     // try {
     //   const response = await fetch("http://localhost:5000/api/auth/verify-otp", {
     //     method: "POST",
@@ -152,7 +159,7 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
     <div className={styles.popupOverlay}>
       <div className={styles.popupOuter}>
         <div className={styles.logoContainer}>
-          <img src="/images/LoginLogo.svg" alt="Logo" className={styles.logo} />
+          <img src="/images/logoPopup.svg" alt="Logo" className={styles.logo} />
         </div>
         <div className={styles.popupContent}>
           <div className={styles.closeBtnContainer}>
@@ -185,7 +192,7 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
                   Reset password?
                 </p>
               )}
-              {isLogin ? (<button disabled={loading} type="submit">Login</button>) : (<button type="submit">Send OTP</button>)}
+              {isLogin ? (<button disabled={loading} type="submit">{loading ? "Logging in..." : "Login"}</button>) : ( <button type="submit" disabled={isSendingOtp}>{isSendingOtp ? "Sending OTP..." : "Send OTP"}</button>)}
               {/* <button type="submit">{isLogin ? "Login" : "Send OTP"}</button> */}
             </form>
           ) : (
@@ -209,7 +216,10 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
                 {isResetPassword && (
                   <input type="password" placeholder="Enter new password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required />
                 )}
-                <button type="submit">{isResetPassword ? "Reset Password" : "Verify OTP"}</button>
+                {/* <button type="submit">{isResetPassword ? "Reset Password" : "Verify OTP"}</button> */}
+                <button type="submit" disabled={isRegistering}>
+  {isResetPassword ? "Reset Password" : isRegistering ? "Registering..." : "Verify OTP"}
+</button>
               </div>
             </form>
           )}

@@ -7,6 +7,7 @@ import Logo from "/src/assets/logo.svg";
 import LoginSignupPopup from "./loginSignupPopUp"; // Importing the popup component
 import useLogout from "../../hooks/useLogout";
 import SearchBar from "../searchBar.jsx";
+import { Link } from "react-router-dom";
 
 const Navbar = ({manageLogin,userInfo,setUserInfo,onSearch,filter=""  }) => {
    console.log("Navbar",userInfo);
@@ -46,7 +47,9 @@ const Navbar = ({manageLogin,userInfo,setUserInfo,onSearch,filter=""  }) => {
     <>
     <nav className={styles.navbar}>
       <div className={styles.logo}>
+      <Link to="/">
         <img src={Logo} alt="Logo" className={styles.logoImage} />
+        </Link>
       </div>
       <div className={styles.searchContainer}>
         {/* <input type="text" placeholder="Search..." className={styles.searchBar} /> */}
