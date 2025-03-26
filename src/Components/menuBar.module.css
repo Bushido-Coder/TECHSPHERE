@@ -76,7 +76,12 @@
   height: 17px;
   margin-right: 9px;
 }
-
+.logoutBtn:hover {
+  border-color: #D4A017; 
+  color: #333; 
+  cursor: pointer;
+  background-color: antiquewhite;
+}
 /* .menu-bar {
   background-color: #fff8ec;
   height: 100vh;

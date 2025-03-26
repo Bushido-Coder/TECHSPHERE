@@ -41,6 +41,8 @@ import { useState } from "react";
 import PropTypes from 'prop-types';
 import styles from "./menuBar.module.css"; // Import CSS
 import useLogout from "../hooks/useLogout";
+import Logo from "../assets/logo.svg";
+import { Link } from "react-router-dom";
 const MenuBar = ({ setActiveTab,setUserInfo }) => {  // ✅ Accept setActiveTab as prop
   const {logout}=useLogout({setUserInfo});
   const [activeItem, setActiveItem] = useState("registered");
@@ -56,7 +58,9 @@ const MenuBar = ({ setActiveTab,setUserInfo }) => {  // ✅ Accept setActiveTab 
 
   return (
     <div className={styles.menuBar}>
-      <img className={styles.logo} src="/src/assets/logo.svg" alt="Logo" />
+      <Link to="/">
+        <img src={Logo} alt="Logo" className={styles.logo} />
+        </Link>
 
       <div className={styles.menuList}>
         {menuItems.map((item) => (
