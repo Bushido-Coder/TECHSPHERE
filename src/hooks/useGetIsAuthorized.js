@@ -12,7 +12,7 @@
             if(res.status===200 && resObj.isAuthenticated=== true){
                 setUserInfo({
                     isAuthenticated: true,
-                    // name: resObj.user.name,
+                    name: resObj.user.name,
                     email: resObj.user.email,
                     userId:resObj.user.userId
 

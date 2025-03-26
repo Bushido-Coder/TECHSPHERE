@@ -71,6 +71,7 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
   const {registerUser}= useSignup({setIsResendAllowed,onClose,setIsRegistering});
   const {login,loading}=useLogin({manageLogin,onClose});
   const [isLogin, setIsLogin] = useState(true);
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isResetPassword, setIsResetPassword] = useState(false);
@@ -133,7 +134,7 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
     e.preventDefault();
     const otp = otpInputs.current.map(input => input.value).join("");
     setIsRegistering(true);
-    await registerUser({ otp, password, email });
+    await registerUser({ otp, password, email, name });
     setIsRegistering(false);
   //   registerUser({
   //     otp,
@@ -244,6 +245,15 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
           ) : (
           !showOtpSection ? (
             <form onSubmit={(e) => isLogin ? handleLogin(e) : handleSendOtp(e, false)}>
+              {!isLogin && (
+      <input 
+        type="text" 
+        placeholder="Enter your name" 
+        value={name} 
+        onChange={(e) => setName(e.target.value)} 
+        required 
+      />
+    )}
               <input type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} required />
               <input type="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required />
               {isLogin && (

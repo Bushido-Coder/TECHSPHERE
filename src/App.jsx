@@ -78,11 +78,12 @@ const App = () => {
 
   useGetIsAuthorized({ setUserInfo });
 
-  const manageLogin = ({ email, userId }) => {
+  const manageLogin = ({ email, userId,name }) => {
     setUserInfo({
       isAuthenticated: true,
       email: email,
-      userId
+      userId,
+      name
     });
   };
 
