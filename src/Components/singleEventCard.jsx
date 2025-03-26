@@ -14,7 +14,7 @@ const SingleEventCard = ({ event, imageBg, userInfo, manageLogin }) => {
   const { bookmarkedEvents, toggleBookmark } = useBookmarks({userInfo});
   const [showLoginSignupPopup, setShowLoginSignupPopup] = useState(false);
 
-  
+ 
   const handleViewDetails = () => {
     // navigate("/detail-page");
     navigate(`/detail-page/${event._id}`) //ckajksdf
@@ -28,8 +28,12 @@ const SingleEventCard = ({ event, imageBg, userInfo, manageLogin }) => {
     const year = d.getUTCFullYear();
     return `${month} ${day}, ${year}`;
   };
-  const formattedStartDate = formatDate(event.start);
 
+  const formattedStartDate = formatDate(event.start);
+  const getPrizeDisplay = (prize) => {
+    return prize === "Free" || prize === 0 ? "Free" : `$${prize}`;
+  };
+  
   return (
     <div className="event-card">
       <div className="image-container" style={{ backgroundColor: imageBg }}>
@@ -77,10 +81,10 @@ const SingleEventCard = ({ event, imageBg, userInfo, manageLogin }) => {
       </span>
       </p>
       <p className="event-detail">
-        Duration: <span className="bold-text">{event.duration}</span>
+        Duration: <span className="bold-text">{event.duration} hours</span>
       </p>
       <p className="event-detail">
-        Prize Pool: <span className="bold-text">{event.prize}</span>
+        Prize Pool: <span className="bold-text">{getPrizeDisplay(event.prize)}</span>
       </p>
       <button onClick={handleViewDetails} className="viewButton">
         View details

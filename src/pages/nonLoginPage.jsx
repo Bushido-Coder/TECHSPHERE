@@ -101,11 +101,11 @@ const NonLoginPage = ({userInfo,setUserInfo,manageLogin}) => {
         <div>
         <select onChange={(e) => setPrice(e.target.value)} value={price}>
           <option value="">Price</option>
-          <option value="">10000</option>
-          <option value="">9000</option>
-          <option value="">8000</option>
-          <option value="">18000</option>
-          <option value="">20000</option>
+          <option value="5000">5000</option>
+          <option value="9000">9000</option>
+          <option value="10000">10000</option>
+          <option value="12000">12000</option>
+          <option value="18000">18000</option>
         </select>
         </div>
         <div>
@@ -116,14 +116,14 @@ const NonLoginPage = ({userInfo,setUserInfo,manageLogin}) => {
         </div>
 
         <div>
-        <select onChange={(e) => setDuration(e.target.value)} value={duration}>
+        <select onChange={(e) => setDuration(e.target.value.trim())} value={duration}>
           <option value="">Time</option>
-          <option value="36 Hours">36 Hours</option>
-          <option value="46 Hours">46 Hours</option>
-          <option value="48 Hours">48 Hours</option>
-          <option value="2 Days">2 Days</option>
-          <option value="4 Days">4 Days</option>
-          <option value="5 Days">5 Days</option>
+          <option value="36">36 hours </option>
+          <option value="46">46 hours</option>
+          <option value="48">48 hours</option>
+          <option value="2">2 hours</option>
+          <option value="4">4 hours</option>
+          <option value="57">57 hours</option>
         </select>
         </div>
       </div>
