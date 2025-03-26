@@ -18,4 +18,8 @@
   .search-bar:focus {
     border-color: #007bff;
   }
-  
+  .searchInput
+  {
+    white-space: normal;
+    
+  }

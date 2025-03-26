@@ -64,6 +64,13 @@
   border: solid 1px #FFDBA5;
   font-weight: bold;
 }
+.hackathon:hover {
+   
+  border-color: #D4A017; 
+  color: #333; 
+  cursor: pointer;
+}
+
 
 .webinar{
   border-radius: 4px;
@@ -76,6 +83,13 @@
   font-weight: bold;
 
 }
+.webinar:hover {
+   
+  border-color: #D4A017; 
+  color: #333; 
+  cursor: pointer;
+}
+
 
 .highlightText {
   color: #FFFFFF; /* Use any color code */
@@ -93,6 +107,12 @@
   font-weight: bold;
 
 }
+.workshop:hover {
+   
+  border-color: #D4A017; 
+  color: #333; 
+  cursor: pointer;
+}
 
 .conference{
   border-radius: 4px;
@@ -105,6 +125,13 @@
   font-weight: bold;
 
 }
+.conference:hover {
+   
+  border-color: #D4A017; 
+  color: #333; 
+  cursor: pointer;
+}
+
 
 .filters button.active {
   /* background-color: #ff7f50;

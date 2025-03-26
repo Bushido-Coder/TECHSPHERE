@@ -101,6 +101,9 @@ SingleEventCard.propTypes = {
     prize: PropTypes.string.isRequired,
   }).isRequired,
   imageBg: PropTypes.string,
+  userInfo: PropTypes.object.isRequired,
+  manageLogin: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
 };
 
 export default SingleEventCard;

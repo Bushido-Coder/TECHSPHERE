@@ -74,7 +74,7 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isResetPassword, setIsResetPassword] = useState(false);
-  const [newPassword, setNewPassword] = useState("");
+  // const [newPassword, setNewPassword] = useState("");
   const otpInputs = useRef([]);
 
   const handleLogin = async (e) => {
@@ -161,48 +161,48 @@ const LoginSignupPopup = ({ onClose,userInfo,manageLogin}) => {
     // }
   };
 
-  const sendResetOtp = async () => {
-    try {
-       import.meta.env.VITE_BACKEND_URL + "/api/v1/eventcard"
-      const response = await fetch( import.meta.env.VITE_BACKEND_URL + "/api/auth/reset-password/send-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-      const data = await response.json();
-      if (response.ok) {
-        setShowOtpSection(true);
-        setIsResetPassword(true);
-      } else {
-        toast.error(data.error || "Failed to send OTP");
-      }
-    } catch (err) {
-      toast.error("An error occurred. Please try again.");
-    }
-  };
+  // const sendResetOtp = async () => {
+  //   try {
+  //      import.meta.env.VITE_BACKEND_URL + "/api/v1/eventcard"
+  //     const response = await fetch( import.meta.env.VITE_BACKEND_URL + "/api/auth/reset-password/send-otp", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ email }),
+  //     });
+  //     const data = await response.json();
+  //     if (response.ok) {
+  //       setShowOtpSection(true);
+  //       setIsResetPassword(true);
+  //     } else {
+  //       toast.error(data.error || "Failed to send OTP");
+  //     }
+  //   } catch (err) {
+  //     toast.error("An error occurred. Please try again.");
+  //   }
+  // };
 
-  const resetPassword = async (e) => {
-    e.preventDefault();
-    const otp = otpInputs.current.map(input => input.value).join("");
-    try {
-      const response = await fetch(import.meta.env.VITE_BACKEND_URL +"/api/auth/reset-password/verify-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, otp, newPassword }),
-      });
-      const data = await response.json();
-      if (response.ok) {
-        toast.success("Password reset successful! Please log in.");
-        setIsResetPassword(false);
-        setShowOtpSection(false);
-        setIsLogin(true);
-      } else {
-        toast.error(data.error || "OTP verification failed");
-      }
-    } catch (err) {
-      toast.error("An error occurred. Please try again.");
-    }
-  };
+  // const resetPassword = async (e) => {
+  //   e.preventDefault();
+  //   const otp = otpInputs.current.map(input => input.value).join("");
+  //   try {
+  //     const response = await fetch(import.meta.env.VITE_BACKEND_URL +"/api/auth/reset-password/verify-otp", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ email, otp, newPassword }),
+  //     });
+  //     const data = await response.json();
+  //     if (response.ok) {
+  //       toast.success("Password reset successful! Please log in.");
+  //       setIsResetPassword(false);
+  //       setShowOtpSection(false);
+  //       setIsLogin(true);
+  //     } else {
+  //       toast.error(data.error || "OTP verification failed");
+  //     }
+  //   } catch (err) {
+  //     toast.error("An error occurred. Please try again.");
+  //   }
+  // };
 
   const handleOtpChange = (index, e) => {
     const value = e.target.value;

@@ -29,6 +29,7 @@ return (
 
 Eventcard.propTypes = {
   eventdata: PropTypes.array.isRequired};
+  
 
 export default Eventcard;
 
