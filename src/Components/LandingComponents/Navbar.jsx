@@ -12,10 +12,11 @@ import { Link } from "react-router-dom";
 const Navbar = ({manageLogin,userInfo,setUserInfo,onSearch,filter=""  }) => {
    console.log("Navbar",userInfo);
 
-  const {isAuthenticated, email}=userInfo || {};
+  const {isAuthenticated, email,name}=userInfo || {};
   const {logout}=useLogout({setUserInfo});
   // console.log(isAuthenticated);
   // console.log(email);
+  console.log(name);
   const [showPopup, setShowPopup] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const userEmail = localStorage.getItem("userEmail");
@@ -59,12 +60,16 @@ const Navbar = ({manageLogin,userInfo,setUserInfo,onSearch,filter=""  }) => {
         {isAuthenticated ? (
           <div className={styles.userDropdown}>
             <button onClick={() => setShowDropdown(!showDropdown)}>
-              {email} ▼
+              {name} ▼
             </button>
             {showDropdown && (
               <div className={styles.dropdownContent}>
-                <a href="/dashboard">My Dashboard</a>
+                <div>
+                <a href="/dashboard">My Events</a>
+                </div>
+                <div>
                 <button onClick={handleLogout}>Logout</button>
+                </div>
               </div>
             )}
           </div>
