@@ -8,6 +8,7 @@ import LoginSignupPopup from "./loginSignupPopUp"; // Importing the popup compon
 import useLogout from "../../hooks/useLogout";
 import SearchBar from "../searchBar.jsx";
 import { Link } from "react-router-dom";
+import { ChevronDown } from "lucide-react";
 
 const Navbar = ({manageLogin,userInfo,setUserInfo,onSearch,filter=""  }) => {
    console.log("Navbar",userInfo);
@@ -59,16 +60,21 @@ const Navbar = ({manageLogin,userInfo,setUserInfo,onSearch,filter=""  }) => {
       <div className={styles.buttons}>
         {isAuthenticated ? (
           <div className={styles.userDropdown}>
-            <button onClick={() => setShowDropdown(!showDropdown)}>
-              {name} ▼
+            <button className={styles.dropdown_button} onClick={() => setShowDropdown(!showDropdown)}>
+              <span>
+              {name}
+              </span> 
+              <ChevronDown 
+          className={`${styles.chevron} ${showDropdown ? styles.chevronRotated : ""}`} 
+        />
             </button>
             {showDropdown && (
               <div className={styles.dropdownContent}>
-                <div>
-                <a href="/dashboard">My Events</a>
+                <div className={styles.dropdownContent_myEvents_container}>
+                <a className={styles.dropdownContent_myEvents} href="/dashboard">My Events</a>
                 </div>
-                <div>
-                <button onClick={handleLogout}>Logout</button>
+                <div className={styles.dropdownContent_logout_container}>
+                <button className={styles.dropdownContent_logout} onClick={handleLogout}>Log Out</button>
                 </div>
               </div>
             )}

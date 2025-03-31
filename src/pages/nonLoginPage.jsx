@@ -22,6 +22,7 @@ const NonLoginPage = ({userInfo,setUserInfo,manageLogin}) => {
   const { bookmarkedEvents, toggleBookmark } = useBookmarks({userInfo});
 
   useEffect(() => {
+    console.log("1")
     const fetchEvents = async () => {
       setError(null);
       try {

@@ -22,25 +22,27 @@
   
   .close {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    font-size: 20px;
+    top: 4px;
+    right: 20px;
+    font-size: 40px;
+    font-weight: bold;
     cursor: pointer;
   }
   
-  .checkIcon {
-    font-size: 60px;
-    color: #008060;
+  .checkIconImg {
+    /* font-size: 60px; */
+    /* color: #008060; */
     margin-bottom: 20px;
   }
   
   h2 {
-    font-size: 20px;
+    font-size: 26px;
     font-weight: bold;
+    padding-bottom: 8px;
   }
   
   p {
-    font-size: 16px;
+    font-size: 18px;
     color: #333;
   }
   

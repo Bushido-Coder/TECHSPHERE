@@ -6,6 +6,7 @@ const useFetchEvents = (eventId = null) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    console.log("3");
     const fetchEvents = async () => {
       try {
         let url = import.meta.env.VITE_BACKEND_URL + "/api/v1/events";

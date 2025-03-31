@@ -103,16 +103,22 @@ const RegistrationForm = ({ fields, eventId, onClose, onSuccess,userInfo }) => {
   };
 
   return (
+    <div className={styles.overlay}>
     <div className={styles.modal}>
       <div className={styles.modalContent}>
         <span className={styles.close} onClick={onClose}>&times;</span>
-        <h2>Register for Event</h2>
+        <div className={styles.form_heading_container}>
+        <h2 className={styles.form_heading}>Join Tech Innovators Hackathon 2025!</h2>
+    
+        <p className={styles.form_subheading} >Innovate. Build. Compete. Register now and be part of a global tech revolution!</p>
+        </div>
         <form onSubmit={handleSubmit}>
           {fields.map((field) => (
             <div key={field.title} className={styles.formGroup}>
-              <label>{field.title}</label>
+              {/* <label>{field.title}</label> */}
               {field.type === "select" ? (
                 <select onChange={(e) => handleChange(e, field)} required={field.isRequired}>
+                    <option value="" disabled selected>Select {field.title}</option>
                   {field.options.map((option, index) => (
                     <option key={index} value={option}>{option}</option>
                   ))}
@@ -120,17 +126,20 @@ const RegistrationForm = ({ fields, eventId, onClose, onSuccess,userInfo }) => {
               ) : (
                 <input
                   type={field.type}
+                  placeholder={field.title}
                   onChange={(e) => handleChange(e, field)}
                   required={field.isRequired}
                 />
               )}
             </div>
           ))}
+    
           <button type="submit" className={styles.submitButton} disabled={loading}>
-            {loading ? "Registering..." : "Register"}
+            {loading ? "Registering..." : "Register Now"}
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 };

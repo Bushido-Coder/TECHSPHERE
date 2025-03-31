@@ -1,17 +1,52 @@
+.overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 55vw; /* Adjust width as needed */
+  /* max-width: 600px;  */
+  /* Prevents it from getting too wide */
+  /* height: auto; Adjust height dynamically */
+  max-height: 90vh; 
+  background: white;
+  padding: 30px 120px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .modal {
+  position: relative; /* Ensures .close is positioned relative to this */
+  /* background: #E2E8F0; */
+  background: #F8FAFC;
+  width: 100%;
+  /* background: white; */
+  padding: 50px 30px 30px 30px;
+  border-radius: 20px;
+  overflow-y: auto;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  min-height: 100%; 
+}
+
+/* .modal {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
+    background: #E2E8F0;
     padding: 20px;
-    border-radius: 20px;
-    width: 507px;
-    max-height: 90vh; /* Ensure the popup doesn’t exceed viewport height */
-    overflow-y: auto; /* Enable scrolling if content overflows */
+    border-radius: 20px; */
+    /* width: 507px; */
+    /* max-height: 90vh;  */
+    /* Ensure the popup doesn’t exceed viewport height */
+    /* overflow-y: auto; */
+     /* Enable scrolling if content overflows */
     /* height: 690px; */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  }
+    /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
+  /* } */
   
   .modalContent {
     display: flex;
@@ -20,20 +55,21 @@
   
   .close {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 20px;
+    top: 10px;
+    right: 40px;
+    font-size: 32px;
+    font-weight: bold;
     cursor: pointer;
   }
   
-  h2 {
+  /* h2 {
     text-align: center;
-  }
+  } */
   
-  .formGroup {
+  /* .formGroup {
     margin-bottom: 15px;
   }
-  
+   */
   input, select {
     width: 100%;
     padding: 10px;
@@ -42,9 +78,11 @@
   }
   
   .submitButton {
+   
     width: 100%;
     padding: 10px;
-    background-color: #FF6600;
+    margin-top: 8px;
+    background-color: #EB5B00 !important;
     color: white;
     border: none;
     border-radius: 5px;
@@ -52,6 +90,21 @@
   }
   
   .submitButton:hover {
-    background-color: #CC5500;
+    /* background-color: #CC5500; */
   }
   
+  .form_heading{
+    margin-bottom: 10px;
+  }
+  .form_subheading{
+    margin-bottom: 15px;
+  }
+
+  .form_heading_container{
+    display:flex;
+    flex-direction: column;
+  }
+
+  form{
+    gap:12px;
+  }
