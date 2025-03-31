@@ -5,7 +5,8 @@ const SuccessPopup = ({ onClose }) => {
     <div className={styles.modal}>
       <div className={styles.modalContent}>
         <span className={styles.close} onClick={onClose}>&times;</span>
-        <div className={styles.checkIcon}>✔</div>
+        {/* <div className={styles.checkIcon}>✔</div> */}
+        <img className={styles.checkIconImg} src='/SuccessCheck.svg'></img>
         <h2>Registration Submitted Successfully!</h2>
         <p>
           Thank you for registering! 🚀 You've successfully secured your spot in the hackathon.
